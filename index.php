@@ -30,7 +30,7 @@
 		padding-right:5px;
 	  }
 	  
-	  #positions
+	  #delimiter
 	  {
 	    max-width:800px;
 	  }
@@ -48,46 +48,48 @@
 	
   </head>
   <body>
-    <header>
-	  <h1>Super Democracy Elections</h1>
-	</header>
-	<h2>Which elections would you like to vote in?</h2>
-    <?php include 'model/index.php' ?>
+    <div id="delimiter">
+      <header>
+        <h1>Super Democracy Elections</h1>
+      </header>
+	  <h2>Which elections would you like to vote in?</h2>
+      <?php include 'model/index.php' ?>
 
-	<div class="panel-group" id="positions">
-      <form action="startvote.php" method="post">
-        <?php foreach ($positions as $position): ?>	
-          <div class="panel panel-default">
-            <div class="panel-heading">
-              <h4 class="panel-title candidate">
-                <a class="pos_name" data-toggle="collapse" data-parent="#positions" href="#desc_<?= $position['id'] ?>_<?= $position['election_id'] ?>">
-                  <?= $position['name']?>
-                </a>
-                <span style="float: right;">
-                  Vote in this election? <input type="checkbox" name="vote_in[]" value="<?=  $position['id']?>_<?= $position['election_id'] ?>" checked>
-                </span>
-              </h4>
-            </div>
-	        <div id="desc_<?= $position['id'] ?>_<?= $position['election_id'] ?>" class="panel-collapse collapse">
-              <div class="panel-body">
-		        <p class="description">
-                  <img class="top" src="/images/position_<?= $position['id'] ?>.png" alt="<?= $position['name']?>"/>
-                  <?= $position['description']?>
-                </p>
+	  <div class="panel-group" id="positions">
+        <form action="startvote.php" method="post">
+          <?php foreach ($positions as $position): ?>	
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <h4 class="panel-title candidate">
+                  <a class="pos_name" data-toggle="collapse" data-parent="#positions" href="#desc_<?= $position['id'] ?>_<?= $position['election_id'] ?>">
+                    <?= $position['name']?>
+                  </a>
+                  <span style="float: right;">
+                    Vote in this election? <input type="checkbox" name="vote_in[]" value="<?=  $position['id']?>_<?= $position['election_id'] ?>" checked>
+                  </span>
+                </h4>
+              </div>
+	          <div id="desc_<?= $position['id'] ?>_<?= $position['election_id'] ?>" class="panel-collapse collapse">
+                <div class="panel-body">
+		          <p class="description">
+                    <img class="top" src="/images/position_<?= $position['id'] ?>.png" alt="<?= $position['name']?>"/>
+                    <?= $position['description']?>
+                  </p>
+                </div>
               </div>
             </div>
+          <?php endforeach ?>
+          <div class="button_list">
+            <input type="submit" class="btn btn-default" name="submit" value="Vote!" />
+            <input type="reset" class="btn btn-default" name="reset" value="Check all" />
           </div>
-        <?php endforeach ?>
-        <div class="button_list">
-          <input type="submit" class="btn btn-default" name="submit" value="Vote!" />
-		  <input type="reset" class="btn btn-default" name="reset" value="Check all" />
-        </div>
-  	  </form>
-	</div>
+        </form>
+      </div>
 	
-	<footer>
-	  <h4>Such copyright, many rights reserved</h3>
-	</footer>
+      <footer>
+        <h4>Such copyright, many rights reserved</h3>
+      </footer>
+	</div>
 	
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://code.jquery.com/jquery.js"></script>
