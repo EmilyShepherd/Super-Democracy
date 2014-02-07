@@ -27,6 +27,7 @@ while ($election = $elections->fetch_assoc())
 
     while ($position = $pos->fetch_assoc())
     {
-        $positions[] = $position;
+        $position['election_id'] = $election['id'];
+        $positions[]             = $position;
     }
 }
