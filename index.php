@@ -56,9 +56,9 @@
       </header>
       <h2>Which elections would you like to vote in?</h2>
       <?php include 'model/index.php' ?>
-
-      <div class="panel-group" id="positions">
-        <form action="startvote.php" method="post">
+      
+      <form action="startvote.php" method="post">
+        <div class="panel-group" id="positions">       
           <?php foreach ($positions as $position): ?>    
             <div class="panel panel-default">
               <div class="panel-heading">
@@ -85,8 +85,8 @@
             <input type="submit" class="btn btn-primary" name="submit" value="Vote!" />
             <input type="reset" class="btn btn-default" name="reset" value="Check all" />
           </div>
-        </form>
-      </div>
+        </div>
+      </form>
     
       <footer>
         <h4>Such copyright, many rights reserved</h3>
