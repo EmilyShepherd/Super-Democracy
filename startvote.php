@@ -17,5 +17,5 @@ if ($_POST && isset($_POST['vote_in']))
 
 if (count($_SESSION['votes']))
 {
-    header('Location: vote.php?position=' . $_SESSION['votes'][0][0] .  '&element=' . $_SESSION['votes'][0][1]);
+    header('Location: vote.php?position=' . $_SESSION['votes'][0][0] .  '&election=' . $_SESSION['votes'][0][1]);
 }
