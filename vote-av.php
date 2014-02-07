@@ -41,60 +41,26 @@
     <h2>Candidates available for selection</h2>
     <div id="unselectedCandidates">
       <div class="panel-group" id="accordion1">
-        <div class="panel panel-default">
-          <div class="panel-heading">
-            <h4 class="panel-title candidate">
-              <a data-toggle="collapse" data-parent="#accordion1" href="#collapseOne">
-                <div class="thumb">
-                  <img src="thumbs/teddy.jpg">
-                </div>
-                Doge 1
-              </a>
-              <button type="button" class="btn btn-default" style="float: right;">Select</button>
-            </h4>
-          </div>
-          <div id="collapseOne" class="panel-collapse collapse in">
-            <div class="panel-body">
-              I am Doge, you should vote for me. Wow.
+        <?php foreach ($candidates as $candidate) : ?>
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <h4 class="panel-title candidate">
+                <a data-toggle="collapse" data-parent="#accordion1" href="#collapseOne">
+                  <div class="thumb">
+                    <img src="thumbs/teddy.jpg">
+                  </div>
+                  <?=$candidate['name']?>
+                </a>
+                <button type="button" class="btn btn-default" style="float: right;">Select</button>
+              </h4>
+            </div>
+            <div id="collapseOne" class="panel-collapse collapse in">
+              <div class="panel-body">
+                <?=$candidate['pitch']?>
+              </div>
             </div>
           </div>
-        </div>
-        <div class="panel panel-default">
-          <div class="panel-heading">
-            <h4 class="panel-title candidate">
-              <a data-toggle="collapse" data-parent="#accordion1" href="#collapseTwo">
-                <div class="thumb">
-                  <img src="thumbs/teddy.jpg">
-                </div>
-                Doge 2
-              </a>
-              <button type="button" class="btn btn-default" style="float: right;">Select</button>
-            </h4>
-          </div>
-          <div id="collapseTwo" class="panel-collapse collapse">
-            <div class="panel-body">
-              I am Doge, you should vote for me. Wow.
-            </div>
-          </div>
-        </div>
-        <div class="panel panel-default">
-          <div class="panel-heading">
-            <h4 class="panel-title candidate">
-              <a data-toggle="collapse" data-parent="#accordion1" href="#collapseThree">
-                <div class="thumb">
-                  <img src="thumbs/teddy.jpg">
-                </div>
-                Doge 3
-              </a>
-              <button type="button" class="btn btn-default" style="float: right;">Select</button>
-            </h4>
-          </div>
-          <div id="collapseThree" class="panel-collapse collapse">
-            <div class="panel-body">
-              I am Doge, you should vote for me. Wow.
-            </div>
-          </div>
-        </div>
+        <?php endforeach ?>
       </div>
     </div>
 
