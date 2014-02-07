@@ -7,7 +7,7 @@
     <title>Bootstrap 101 Template</title>
 
     <style>
-      .position {
+      .pos_name {
         font-weight: bold;
       }
     </style>
@@ -31,12 +31,12 @@
     <?php include 'model/index.php' ?>
 
 	<div class="panel-group" id="positions">
-      <form action="" method="post">
+      <form action="vote.php" method="post">
         <?php foreach ($positions as $position): ?>	
           <div class="panel panel-default">
             <div class="panel-heading">
               <h4 class="panel-title candidate">
-                <a class data-toggle="collapse" data-parent="#positions" href="#desc_<?= $position['id'] ?>">
+                <a class="pos_name" data-toggle="collapse" data-parent="#positions" href="#desc_<?= $position['id'] ?>">
                   <?= $position['name']?>
                 </a>
                 <div style="float: right;">
@@ -51,6 +51,9 @@
             </div>
           </div>
         <?php endforeach ?>
+        <div class="buttons">
+          <input type="submit" class="btn btn-default" name="submit" value="Vote!" />
+        </div>
   	  </form>
 	</div>
 	
