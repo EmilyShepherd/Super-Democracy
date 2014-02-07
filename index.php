@@ -29,6 +29,11 @@
 	    padding-top:5px;
 		padding-right:5px;
 	  }
+	  
+	  #positions
+	  {
+	    max-width:800px;
+	  }
     </style>
 	
     <!-- Bootstrap -->
@@ -50,20 +55,20 @@
     <?php include 'model/index.php' ?>
 
 	<div class="panel-group" id="positions">
-      <form action="vote.php" method="post">
+      <form action="startvote.php" method="post">
         <?php foreach ($positions as $position): ?>	
           <div class="panel panel-default">
             <div class="panel-heading">
               <h4 class="panel-title candidate">
-                <a class="pos_name" data-toggle="collapse" data-parent="#positions" href="#desc_<?= $position['id'] ?>">
+                <a class="pos_name" data-toggle="collapse" data-parent="#positions" href="#desc_<?= $position['id'] ?>_<?= $position['election_id'] ?>">
                   <?= $position['name']?>
                 </a>
-                <div style="float: right;">
-                  <input type="checkbox" name="vote_in[]" value="<?=  $position['id']?>_<?= $position['election_id'] ?>" checked>
-                </div>
+                <span style="float: right;">
+                  Vote in this election? <input type="checkbox" name="vote_in[]" value="<?=  $position['id']?>_<?= $position['election_id'] ?>" checked>
+                </span>
               </h4>
             </div>
-	        <div id="desc_<?= $position['id'] ?>" class="panel-collapse collapse">
+	        <div id="desc_<?= $position['id'] ?>_<?= $position['election_id'] ?>" class="panel-collapse collapse">
               <div class="panel-body">
 		        <p class="description">
                   <img class="top" src="/images/position_<?= $position['id'] ?>.png" alt="<?= $position['name']?>"/>
@@ -75,7 +80,7 @@
         <?php endforeach ?>
         <div class="button_list">
           <input type="submit" class="btn btn-default" name="submit" value="Vote!" />
-		  <input type="reset" class="btn btn-default" name="reset" value="Reset" />
+		  <input type="reset" class="btn btn-default" name="reset" value="Check all" />
         </div>
   	  </form>
 	</div>
