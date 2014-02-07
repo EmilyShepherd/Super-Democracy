@@ -82,7 +82,7 @@
             </div>
           <?php endforeach ?>
           <div class="button_list">
-            <input type="submit" class="btn btn-default" name="submit" value="Vote!" />
+            <input type="submit" class="btn btn-primary" name="submit" value="Vote!" />
             <input type="reset" class="btn btn-default" name="reset" value="Check all" />
           </div>
         </form>
