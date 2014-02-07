@@ -28,51 +28,71 @@
 
     <p><?=$position['description']?></p>
 
-    <div class="panel-group" id="accordion1">
-      <?php foreach ($candidates as $candidate) : ?>
-        <div class="panel panel-default">
-          <div class="panel-heading">
-            <h4 class="panel-title candidate">
-              <a data-toggle="collapse" data-parent="#accordion1" href="#collapse<?=$candidate['id']?>">
-                <?=$candidate['name']?>
-              </a>
-              <input type="radio" style="float: right;">
-            </h4>
-          </div>
-          <div id="collapse<?=$candidate['id']?>" class="panel-collapse collapse in">
-            <div class="panel-body">
-              <?=$candidate['pitch']?>
-              <br>
-              <button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#manifesto<?=$candidate['id']?>">
-                View Manifesto
-              </button>
-            </div>
-          </div>
-        </div>
-        <div class="modal fade" id="manifesto<?=$candidate['id']?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-          <div class="modal-dialog">
-            <div class="modal-content">
-              <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <h4 class="modal-title" id="myModalLabel">View Manifesto</h4>
-              </div>
-              <div class="modal-body">
-                <?=$candidate['manifesto']?>
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-              </div>
-            </div>
-          </div>
-        </div>
-      <?php endforeach ?>
-    </div>
+    <form action="vote-fptp.php" method="post">
+      <input name="election" type="hidden" value="<?=$_GET["election"]?>">
+      <input name="position" type="hidden" value="<?=$_GET["position"]?>">
 
-    <button type="button" class="btn btn-primary">Continue</button>
+      <div class="panel-group" id="accordion1">
+        <?php foreach ($candidates as $candidate) : ?>
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <h4 class="panel-title candidate">
+                <a data-toggle="collapse" data-parent="#accordion1" href="#collapse<?=$candidate['id']?>">
+                  <?=$candidate['name']?>
+                </a>
+                <input name="vote" value="<?=$candidate['id']?>" type="radio" style="float: right;">
+              </h4>
+            </div>
+            <div id="collapse<?=$candidate['id']?>" class="panel-collapse collapse in">
+              <div class="panel-body">
+                <?=$candidate['pitch']?>
+                <br>
+                <button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#manifesto<?=$candidate['id']?>">
+                  View Manifesto
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="modal fade" id="manifesto<?=$candidate['id']?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                  <h4 class="modal-title" id="myModalLabel">View Manifesto</h4>
+                </div>
+                <div class="modal-body">
+                  <?=$candidate['manifesto']?>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        <?php endforeach ?>
+      </div>
+
+      <p id="noCandidateSelected" style="display: none;" class="bg-danger">Please select one candidate</p>
+
+      <input id="continue" type="submit" class="btn btn-primary" value="Continue" />
+    </form>
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://code.jquery.com/jquery.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="resources/bootstrap/dist/js/bootstrap.min.js"></script>
+
+    <script>
+      $('#continue').click(function () {
+        var atLeastOneIsChecked = $('input:radio').is(':checked');
+
+        if (!atLeastOneIsChecked) {
+          $('#noCandidateSelected').show();
+          return false;
+        } else {
+          return true;
+        }
+      });
+    </script>
   </body>
 </html>
