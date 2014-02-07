@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 07, 2014 at 10:30 PM
+-- Generation Time: Feb 07, 2014 at 11:35 PM
 -- Server version: 5.6.14
 -- PHP Version: 5.5.6
 
@@ -34,7 +34,14 @@ CREATE TABLE IF NOT EXISTS `candidate` (
   `manifesto` text NOT NULL,
   `pitch` text NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+
+--
+-- Dumping data for table `candidate`
+--
+
+INSERT INTO `candidate` (`id`, `person_id`, `position_id`, `election_id`, `manifesto`, `pitch`) VALUES
+(1, 1, 2, 1, 'I am great m8', 'Nope m8');
 
 -- --------------------------------------------------------
 
@@ -87,7 +94,14 @@ CREATE TABLE IF NOT EXISTS `person` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` text NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+
+--
+-- Dumping data for table `person`
+--
+
+INSERT INTO `person` (`id`, `name`) VALUES
+(1, 'Hiimshep');
 
 -- --------------------------------------------------------
 
