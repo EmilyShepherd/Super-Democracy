@@ -26,7 +26,8 @@
           <div class="panel-heading">
             <h4 class="panel-title">
               <a data-toggle="collapse" data-parent="#accordion1" href="#collapseOne">
-                Collapsible Group Item #1
+                Doge 1
+                <button type="button" class="btn btn-default">Select</button>
               </a>
             </h4>
           </div>
@@ -39,7 +40,8 @@
           <div class="panel-heading">
             <h4 class="panel-title">
               <a data-toggle="collapse" data-parent="#accordion1" href="#collapseTwo">
-                Collapsible Group Item #2
+                Doge 2
+                <button type="button" class="btn btn-default">Select</button>
               </a>
             </h4>
           </div>
@@ -52,7 +54,8 @@
           <div class="panel-heading">
             <h4 class="panel-title">
               <a data-toggle="collapse" data-parent="#accordion1" href="#collapseThree">
-                Collapsible Group Item #3
+                Doge 3
+                <button type="button" class="btn btn-default">Select</button>
               </a>
             </h4>
           </div>
@@ -71,7 +74,15 @@
           <div class="panel-heading">
             <h4 class="panel-title">
               <a data-toggle="collapse" data-parent="#accordion2" href="#collapseFour">
-                Collapsible Group Item #1
+                Doge 4
+                <div class="btn-group">
+                  <button type="button" class="btn btn-default">
+                    <span class="glyphicon glyphicon-arrow-up"></span>
+                  </button>
+                  <button type="button" class="btn btn-default">
+                    <span class="glyphicon glyphicon-arrow-down"></span>
+                  </button>
+                </div>
               </a>
             </h4>
           </div>
@@ -84,7 +95,15 @@
           <div class="panel-heading">
             <h4 class="panel-title">
               <a data-toggle="collapse" data-parent="#accordion2" href="#collapseFive">
-                Collapsible Group Item #2
+                Doge 5
+                <div class="btn-group">
+                  <button type="button" class="btn btn-default">
+                    <span class="glyphicon glyphicon-arrow-up"></span>
+                  </button>
+                  <button type="button" class="btn btn-default">
+                    <span class="glyphicon glyphicon-arrow-down"></span>
+                  </button>
+                </div>
               </a>
             </h4>
           </div>
@@ -97,7 +116,15 @@
           <div class="panel-heading">
             <h4 class="panel-title">
               <a data-toggle="collapse" data-parent="#accordion2" href="#collapseSix">
-                Collapsible Group Item #3
+                Doge 6
+                <div class="btn-group">
+                  <button type="button" class="btn btn-default">
+                    <span class="glyphicon glyphicon-arrow-up"></span>
+                  </button>
+                  <button type="button" class="btn btn-default">
+                    <span class="glyphicon glyphicon-arrow-down"></span>
+                  </button>
+                </div>
               </a>
             </h4>
           </div>
@@ -107,6 +134,8 @@
           </div>
         </div>
       </div>
+
+      <button type="button" class="btn btn-primary">Continue</button>
     </div>
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
