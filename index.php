@@ -7,9 +7,28 @@
     <title>Bootstrap 101 Template</title>
 
     <style>
-      .pos_name {
+      .pos_name
+	  {
         font-weight: bold;
       }
+	  
+      img.top
+      {
+        vertical-align:text-top;
+      }
+	  
+	  <!-- For large checkboxes, should we choose to use them -->
+	  .large
+	  {
+	    width: 30px;
+		height: 30px;
+	  }
+	  
+	  div.button_list
+	  {
+	    padding-top:5px;
+		padding-right:5px;
+	  }
     </style>
 	
     <!-- Bootstrap -->
@@ -40,19 +59,23 @@
                   <?= $position['name']?>
                 </a>
                 <div style="float: right;">
-                  <input type="checkbox" name="vote_in[]" value="<?=  $position['id']?>_<?= $position['election_id'] ?>">
+                  <input type="checkbox" name="vote_in[]" value="<?=  $position['id']?>_<?= $position['election_id'] ?>" checked>
                 </div>
               </h4>
             </div>
 	        <div id="desc_<?= $position['id'] ?>" class="panel-collapse collapse">
               <div class="panel-body">
-		        <?= $position['description']?>
+		        <p class="description">
+                  <img class="top" src="/images/position_<?= $position['id'] ?>.png" alt="<?= $position['name']?>"/>
+                  <?= $position['description']?>
+                </p>
               </div>
             </div>
           </div>
         <?php endforeach ?>
-        <div class="buttons">
+        <div class="button_list">
           <input type="submit" class="btn btn-default" name="submit" value="Vote!" />
+		  <input type="reset" class="btn btn-default" name="reset" value="Reset" />
         </div>
   	  </form>
 	</div>
