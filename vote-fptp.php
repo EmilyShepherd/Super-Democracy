@@ -42,6 +42,26 @@
           <div id="collapse<?=$candidate['id']?>" class="panel-collapse collapse in">
             <div class="panel-body">
               <?=$candidate['pitch']?>
+              <br>
+              <button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#manifesto<?=$candidate['id']?>">
+                View Manifesto
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="modal fade" id="manifesto<?=$candidate['id']?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title" id="myModalLabel">View Manifesto</h4>
+              </div>
+              <div class="modal-body">
+                <?=$candidate['manifesto']?>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+              </div>
             </div>
           </div>
         </div>
