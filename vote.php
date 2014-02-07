@@ -6,6 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Bootstrap 101 Template</title>
 
+    <style>
+      .candidate {
+        height: 50px;
+      }
+    </style>
+
     <!-- Bootstrap -->
     <link href="resources/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
 
@@ -24,11 +30,11 @@
       <div class="panel-group" id="accordion1">
         <div class="panel panel-default">
           <div class="panel-heading">
-            <h4 class="panel-title">
+            <h4 class="panel-title candidate">
               <a data-toggle="collapse" data-parent="#accordion1" href="#collapseOne">
                 Doge 1
-                <button type="button" class="btn btn-default">Select</button>
               </a>
+              <button type="button" class="btn btn-default" style="float: right;">Select</button>
             </h4>
           </div>
           <div id="collapseOne" class="panel-collapse collapse in">
@@ -38,11 +44,11 @@
         </div>
         <div class="panel panel-default">
           <div class="panel-heading">
-            <h4 class="panel-title">
+            <h4 class="panel-title candidate">
               <a data-toggle="collapse" data-parent="#accordion1" href="#collapseTwo">
                 Doge 2
-                <button type="button" class="btn btn-default">Select</button>
               </a>
+              <button type="button" class="btn btn-default" style="float: right;">Select</button>
             </h4>
           </div>
           <div id="collapseTwo" class="panel-collapse collapse">
@@ -52,11 +58,11 @@
         </div>
         <div class="panel panel-default">
           <div class="panel-heading">
-            <h4 class="panel-title">
+            <h4 class="panel-title candidate">
               <a data-toggle="collapse" data-parent="#accordion1" href="#collapseThree">
                 Doge 3
-                <button type="button" class="btn btn-default">Select</button>
               </a>
+              <button type="button" class="btn btn-default" style="float: right;">Select</button>
             </h4>
           </div>
           <div id="collapseThree" class="panel-collapse collapse">
@@ -72,18 +78,18 @@
       <div class="panel-group" id="accordion2">
         <div class="panel panel-default">
           <div class="panel-heading">
-            <h4 class="panel-title">
+            <h4 class="panel-title candidate">
               <a data-toggle="collapse" data-parent="#accordion2" href="#collapseFour">
                 Doge 4
-                <div class="btn-group">
-                  <button type="button" class="btn btn-default">
-                    <span class="glyphicon glyphicon-arrow-up"></span>
-                  </button>
-                  <button type="button" class="btn btn-default">
-                    <span class="glyphicon glyphicon-arrow-down"></span>
-                  </button>
-                </div>
               </a>
+              <div class="btn-group" style="float: right;">
+                <button type="button" class="btn btn-default">
+                  <span class="glyphicon glyphicon-arrow-up"></span>
+                </button>
+                <button type="button" class="btn btn-default">
+                  <span class="glyphicon glyphicon-arrow-down"></span>
+                </button>
+              </div>
             </h4>
           </div>
           <div id="collapseFour" class="panel-collapse collapse in">
@@ -93,18 +99,18 @@
         </div>
         <div class="panel panel-default">
           <div class="panel-heading">
-            <h4 class="panel-title">
+            <h4 class="panel-title candidate">
               <a data-toggle="collapse" data-parent="#accordion2" href="#collapseFive">
                 Doge 5
-                <div class="btn-group">
-                  <button type="button" class="btn btn-default">
-                    <span class="glyphicon glyphicon-arrow-up"></span>
-                  </button>
-                  <button type="button" class="btn btn-default">
-                    <span class="glyphicon glyphicon-arrow-down"></span>
-                  </button>
-                </div>
               </a>
+              <div class="btn-group" style="float: right;">
+                <button type="button" class="btn btn-default">
+                  <span class="glyphicon glyphicon-arrow-up"></span>
+                </button>
+                <button type="button" class="btn btn-default">
+                  <span class="glyphicon glyphicon-arrow-down"></span>
+                </button>
+              </div>
             </h4>
           </div>
           <div id="collapseFive" class="panel-collapse collapse">
@@ -114,18 +120,18 @@
         </div>
         <div class="panel panel-default">
           <div class="panel-heading">
-            <h4 class="panel-title">
+            <h4 class="panel-title candidate">
               <a data-toggle="collapse" data-parent="#accordion2" href="#collapseSix">
                 Doge 6
-                <div class="btn-group">
-                  <button type="button" class="btn btn-default">
-                    <span class="glyphicon glyphicon-arrow-up"></span>
-                  </button>
-                  <button type="button" class="btn btn-default">
-                    <span class="glyphicon glyphicon-arrow-down"></span>
-                  </button>
-                </div>
               </a>
+              <div class="btn-group" style="float: right;">
+                <button type="button" class="btn btn-default">
+                  <span class="glyphicon glyphicon-arrow-up"></span>
+                </button>
+                <button type="button" class="btn btn-default">
+                  <span class="glyphicon glyphicon-arrow-down"></span>
+                </button>
+              </div>
             </h4>
           </div>
           <div id="collapseSix" class="panel-collapse collapse">
