@@ -1,3 +1,4 @@
+<?php include 'model/vote.php' ?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -23,52 +24,27 @@
     <![endif]-->
   </head>
   <body>
-    <h1>President</h1>
+    <h1><?=$position['name']?></h1>
+
+    <p><?=$position['description']?></p>
 
     <div class="panel-group" id="accordion1">
-      <div class="panel panel-default">
-        <div class="panel-heading">
-          <h4 class="panel-title candidate">
-            <a data-toggle="collapse" data-parent="#accordion1" href="#collapseOne">
-              Doge 1
-            </a>
-            <input type="radio" style="float: right;">
-          </h4>
-        </div>
-        <div id="collapseOne" class="panel-collapse collapse in">
-          <div class="panel-body">
+      <?php foreach ($candidates as $candidate) : ?>
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h4 class="panel-title candidate">
+              <a data-toggle="collapse" data-parent="#accordion1" href="#collapseOne">
+                <?=$candidate['name']?>
+              </a>
+              <input type="radio" style="float: right;">
+            </h4>
+          </div>
+          <div id="collapseOne" class="panel-collapse collapse in">
+            <div class="panel-body">
+            </div>
           </div>
         </div>
-      </div>
-      <div class="panel panel-default">
-        <div class="panel-heading">
-          <h4 class="panel-title candidate">
-            <a data-toggle="collapse" data-parent="#accordion1" href="#collapseTwo">
-              Doge 2
-            </a>
-            <input type="radio" style="float: right;">
-          </h4>
-        </div>
-        <div id="collapseTwo" class="panel-collapse collapse">
-          <div class="panel-body">
-          </div>
-        </div>
-      </div>
-      <div class="panel panel-default">
-        <div class="panel-heading">
-          <h4 class="panel-title candidate">
-            <a data-toggle="collapse" data-parent="#accordion1" href="#collapseThree">
-              Doge 3
-            </a>
-            <input type="radio" style="float: right;">
-          </h4>
-        </div>
-        <div id="collapseThree" class="panel-collapse collapse">
-          <div class="panel-body">
-          </div>
-        </div>
-      </div>
-    </div>
+      <?php endforeach ?>
 
     <button type="button" class="btn btn-primary">Continue</button>
 
