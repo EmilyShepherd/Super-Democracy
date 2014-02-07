@@ -33,18 +33,20 @@
         <div class="panel panel-default">
           <div class="panel-heading">
             <h4 class="panel-title candidate">
-              <a data-toggle="collapse" data-parent="#accordion1" href="#collapseOne">
+              <a data-toggle="collapse" data-parent="#accordion1" href="#collapse<?=$candidate['id']?>">
                 <?=$candidate['name']?>
               </a>
               <input type="radio" style="float: right;">
             </h4>
           </div>
-          <div id="collapseOne" class="panel-collapse collapse in">
+          <div id="collapse<?=$candidate['id']?>" class="panel-collapse collapse in">
             <div class="panel-body">
+              <?=$candidate['pitch']?>
             </div>
           </div>
         </div>
       <?php endforeach ?>
+    </div>
 
     <button type="button" class="btn btn-primary">Continue</button>
 
