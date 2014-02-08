@@ -1,13 +1,35 @@
 <?php
-    if (isset($_POST['name'])) {
-        $db->query('INSERT INTO position(`name`) VALUES(\'' . $db->real_escape_string($_POST['name']) . '\')');
-    }
 
     $title = "Add Position";
 
     include '../common/header.php';
 
     include '../model/database.php';
+
+    if ($_POST)
+    {
+        $db->query('INSERT INTO `position`(`name`) VALUES(\'' . $db->real_escape_string($_POST['name']) . '\')');
+
+        $id = $db->insert_id;
+
+        foreach ($_POST['vote'] as $vote)
+        {
+            $db->query
+            (
+                  'INSERT INTO `position-vote`(position_id, group_id) '
+                . 'VALUES(' . $id . ',' . (int)$vote . ')'
+            );
+        }
+
+        foreach ($_POST['hold'] as $hold)
+        {
+            $db->query
+            (
+                  'INSERT INTO `position-eligable`(position_id, group_id) '
+                . 'VALUES(' . $id . ',' . (int)$vote . ')'
+            );
+        }
+    }
 
 ?>
     <style>
@@ -74,23 +96,19 @@
 
     <h2>Groups Eligible to Vote</h2>
 
-<?php
-    echo('<select name="[vote]" multiple="true">');
-    foreach ($groups as $group) {
-        echo('<option value="' . $group['id'] . '">' . $group['name'] . '</option>');
-    }
-    echo('</select>');
-?>
+    <select name="vote[]" multiple="multiple">
+      <?php foreach ($groups as $group) : ?>
+        <option value="<?=$group['id']?>'"><?=$group['name']?></option>
+      <?php endforeach ?>
+    </select>
 
     <h2>Groups Eligible to Hold the Position</h2>
 
-<?php
-    echo('<select name="[hold]" multiple="true">');
-    foreach ($groups as $group) {
-        echo('<option value="' . $group['id'] . '">' . $group['name'] . '</option>');
-    }
-    echo('</select>');
-?>
+    <select name="hold[]" multiple="multiple">
+      <?php foreach ($groups as $group) : ?>
+        <option value="<?=$group['id']?>'"><?=$group['name']?></option>
+      <?php endforeach ?>
+    </select>
 
         <input id="add" type="submit" class="btn btn-primary" value="Add Position" />
       </form>
