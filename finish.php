@@ -8,7 +8,10 @@ include 'common/header.php';
 
 ?>
 
-<h1>You are about to cast your vote</h1>
+</head>
+<body>
+  <div id="delimiter">
+    <h1>You are about to cast your vote</h1>
 
 <?php
 
@@ -52,7 +55,9 @@ foreach ($_SESSION['voted'] as $vote)
 
 ?>
 
-<button onclick="location.href='do-vote.php';">Cast Vote</button>
+  <button onclick="location.href='do-vote.php';">Cast Vote</button>
+
+</div>
 
 <?php
     include 'common/footer.php';
