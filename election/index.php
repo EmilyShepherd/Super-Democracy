@@ -44,16 +44,14 @@ include '../common/header.php';
               . 'GROUP BY candidate_id ORDER BY votes'
             );
 
+            echo("<ol>");
             while ($candidate = $candidates->fetch_assoc()) {
                 $votes = $candidate['votes'];
                 $name = $candidate['name'];
 
-                ?>
-
-                    <?=$name?> <?=$votes?>
-
-                <?php
+                echo("<li>" . $name . ": " . $votes . "</li>");
             }
+            echo("</ol>");
         } else {
             $personVotes = array();
             $personName = array();
