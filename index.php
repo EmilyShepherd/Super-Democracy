@@ -46,9 +46,9 @@ include 'model/index.php';
           <div class="panel-group" id="positions">
             <?php foreach ($positions as $position): ?>
               <div class="panel panel-default">
-                <div class="panel-heading">
+                <div class="panel-heading" onclick="document.getElementById('a_<?= $position['id'] ?>_<?= $position['election_id'] ?>').click();" style="cursor: pointer">
                   <h4 class="panel-title candidate">
-                    <a class="pos_name" data-toggle="collapse" data-parent="#positions" href="#desc_<?= $position['id'] ?>_<?= $position['election_id'] ?>">
+                    <a id="a_<?= $position['id'] ?>_<?= $position['election_id'] ?>" class="pos_name" data-toggle="collapse" data-parent="#positions" href="#desc_<?= $position['id'] ?>_<?= $position['election_id'] ?>">
                       <?= $position['name']?>
                     </a>
                     <span style="float: right; position: relative; bottom: 3px;">
