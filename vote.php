@@ -14,7 +14,7 @@ if ($_POST)
 {
     $_SESSION['voted'][$_POST['step']] = $_POST;
 
-    if ((int)$_POST['step'] == count($_SESSION['votes']))
+    if ((int)$_POST['step'] + 1 == count($_SESSION['votes']))
     {
         header('Location: finish.php');
     }
@@ -63,6 +63,37 @@ else
             $candidate['id'] = $candidate['candidate_id'];
             $candidates[]    = $candidate;
         }
+
+        $title = "Vote for " . $position;
+
+        include 'common/header.php';
+?>
+    <style>
+    .candidate {
+        height: 100px;
+    }
+
+    .thumb {
+        width: 100px;
+        height: 100px;
+        overflow: hidden;
+        float: left;
+    }
+
+    .thumb img {
+        width: 100px;
+        height: 100px;
+        margin: 0 0 0 0;
+    }
+
+    #delimiter
+    {
+        max-width:800px;
+        margin-left:auto;
+        margin-right:auto;
+    }
+    </style>
+<?php
     }
     else
     {
@@ -75,9 +106,11 @@ switch ($position['voting'])
 {
     case AV:
         include 'vote-av.php';
+        include 'common/footer.php';
         exit;
 
     case FPTP:
         include 'vote-fptp.php';
+        include 'common/footer.php';
         exit;
 }

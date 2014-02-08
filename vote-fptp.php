@@ -1,51 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Bootstrap 101 Template</title>
-
-    <style>
-      .candidate {
-        height: 100px;
-      }
-
-      .thumb {
-          width: 100px;
-          height: 100px;
-          overflow: hidden;
-          float: left;
-      }
-
-     .thumb img {
-          width: 100px;
-         height: 100px;
-          margin: 0 0 0 0;
-      }
-
-      #delimiter
-      {
-        max-width:800px;
-        margin-left:auto;
-        margin-right:auto;
-      }
-    </style>
-
-    <!-- Bootstrap -->
-    <link href="resources/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
   </head>
   <body>
     <div id="delimiter">
     <h1><?=$position['name']?></h1>
 
+    <button onclick="window.location.href = 'vote.php?step=<?=$_GET['step'] + 1?>'" type="button" class="btn btn-default" style="float: right;">Skip</button>
     <p><?=$position['description']?></p>
 
     <form action="vote.php" method="post">
@@ -99,13 +57,14 @@
       <input id="continue" type="submit" class="btn btn-primary" value="Continue" />
     </form>
 
-    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="https://code.jquery.com/jquery.js"></script>
-    <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="resources/bootstrap/dist/js/bootstrap.min.js"></script>
+    <div class="progress">
+      <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: <?= (int)(($_GET['step']/count($_SESSION['votes']))*100) ?>%;">
+        <span class="sr-only"><?= (int)(($_GET['step']/count($_SESSION['votes']))*100) ?>% Complete</span>
+      </div>
+    </div>
 
     <script>
-      $('#continue').click(function () {
+      document.getElementById('continue').onclick = function () {
         var atLeastOneIsChecked = $('input:radio').is(':checked');
 
         if (!atLeastOneIsChecked) {
@@ -114,8 +73,5 @@
         } else {
           return true;
         }
-      });
+      };
     </script>
-  </div>
-  </body>
-</html>
