@@ -80,6 +80,16 @@
           <div class="points"><input class="points_field" name="points[]" type="text" value="" /></div>
           <div class="points"><input class="points_field" name="points[]" type="text" value="" /></div>
         </div>
+        <h2>Your photo</h2>
+        <input type="file" name="photo" />
+        <h2>Your T-shirt size</h2>
+        <select name="size">
+          <option value="XS">Extra Small</option>
+          <option value="S">Small</option>
+          <option value="M">Medium</option>
+          <option value="L">Large</option>
+          <option value="XL">Extra Large</option>
+        </select>
         <h2>The small print</h2>
         <input type="checkbox" name="legal"> m8 yes
         <div class="button_list">
