@@ -55,7 +55,7 @@
         <h1>Super Democracy Elections</h1>
       </header>
       <h2>Position</h2>
-      <?php include 'model/index.php' ?>
+      <?php include 'model/nominate.php' ?>
 
       <form action="addcandidate.php" method="post">
         <p>I wish to nominate myself for the position of: <select name="position">
