@@ -52,16 +52,25 @@
     <div id="unselectedCandidates">
       <div class="panel-group" id="accordion1">
         <?php foreach ($candidates as $candidate) : ?>
-          <div class="panel panel-default">
+          <div id="candidate<?=$candidate['id']?>" class="panel panel-default">
             <div class="panel-heading">
               <h4 class="panel-title candidate">
-                <a data-toggle="collapse" data-parent="#accordion1" href="#collapse<?=$candidate['id']?>">
+                <a id="moveable<?=$candidate['id']?>" data-toggle="collapse" data-parent="#accordion1" href="#collapse<?=$candidate['id']?>">
                   <div class="thumb">
                     <img src="thumbs/teddy.jpg">
                   </div>
                   <?=$candidate['name']?>
                 </a>
-                <button type="button" class="btn btn-default" style="float: right;">Select</button>
+                <button id="select<?=$candidate['id']?>" type="button" class="btn btn-default" style="float: right;" onclick="move(this, <?=$candidate['id']?>);">
+                  Select
+                </button>
+
+                <button id="up<?=$candidate['id']?>" type="button" class="btn btn-default" style="float: right; display: none;" onclick="up(<?=$candidate['id']?>);">
+                  <span class="glyphicon glyphicon-arrow-up"></span>
+                </button>
+                <button id="down<?=$candidate['id']?>" type="button" class="btn btn-default" style="float: right; display: none;" onclick="down(<?=$candidate['id']?>);">
+                  <span class="glyphicon glyphicon-arrow-down"></span>
+                </button>
               </h4>
             </div>
             <div id="collapse<?=$candidate['id']?>" class="panel-collapse collapse">
@@ -73,23 +82,6 @@
               </div>
             </div>
           </div>
-
-          <div class="modal fade" id="manifesto<?=$candidate['id']?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                  <h4 class="modal-title" id="myModalLabel">View Manifesto</h4>
-                </div>
-                <div class="modal-body">
-                  <?=$candidate['manifesto']?>
-                </div>
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                </div>
-              </div>
-            </div>
-          </div>
         <?php endforeach ?>
       </div>
     </div>
@@ -97,14 +89,69 @@
     <h2>Selected Candidates</h2>
     <div id="selectedCandidates">
       Select candidates from the list above to begin ranking
+      <div class="panel-group" id="accordion2">
+      </div>
     </div>
 
     <button type="button" class="btn btn-primary">Continue</button>
+
+    <?php foreach ($candidates as $candidate) : ?>
+      <div class="modal fade" id="manifesto<?=$candidate['id']?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+              <h4 class="modal-title" id="myModalLabel">View Manifesto</h4>
+            </div>
+            <div class="modal-body">
+              <?=$candidate['manifesto']?>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    <?php endforeach ?>
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://code.jquery.com/jquery.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="resources/bootstrap/dist/js/bootstrap.min.js"></script>
+
+    <script>
+      function move(select, candidate) {
+        if (select.picked) {
+          $("#candidate" + candidate).appendTo("#accordion1");
+
+          $("#movable" + candidate).data('parent', 'accordion1');
+
+          $("#up" + candidate).hide();
+          $("#down" + candidate).hide();
+
+          select.picked = false;
+          select.textContent = "Select";
+        } else {
+          $("#candidate" + candidate).appendTo("#accordion2");
+
+          $("#movable" + candidate).data('parent', 'accordion2');
+
+          $("#up" + candidate).show();
+          $("#down" + candidate).show();
+
+          select.picked = true;
+          select.textContent = "Deselect";
+        }
+      }
+
+      function up(candidate) {
+        $("#candidate" + candidate).after($("#candidate" + candidate).prev());
+      }
+
+      function down(candidate) {
+        $("#candidate" + candidate).before($("#candidate" + candidate).next());
+      }
+    </script>
   </div>
   </body>
 </html>
