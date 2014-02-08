@@ -104,7 +104,15 @@ include '../common/header.php';
                         echo("Only one candidate remains");
                         break;
                     }
+
+                    foreach ($roundPrefs as $candidate) {
+                        $personVotes[(int) $candidate['candidate_id']] = (int) $candidate['votes'];
+                        $personName[(int) $candidate['candidate_id']] = $candidate['name'];
+                    }
                 }
+
+                //var_dump($personName);
+                //var_dump($personVotes);
 
                 foreach ($personVotes as $id => $votes) {
                     $name = $personName[$id];
