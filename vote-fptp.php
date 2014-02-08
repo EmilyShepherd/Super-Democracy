@@ -9,7 +9,20 @@
 
     <style>
       .candidate {
-        height: 50px;
+        height: 100px;
+      }
+
+      .thumb {
+          width: 100px;
+          height: 100px;
+          overflow: hidden;
+          float: left;
+      }
+
+     .thumb img {
+          width: 100px;
+         height: 100px;
+          margin: 0 0 0 0;
       }
     </style>
 
@@ -38,12 +51,15 @@
             <div class="panel-heading">
               <h4 class="panel-title candidate">
                 <a data-toggle="collapse" data-parent="#accordion1" href="#collapse<?=$candidate['id']?>">
+                  <div class="thumb">
+                    <img src="thumbs/teddy.jpg">
+                  </div>
                   <?=$candidate['name']?>
                 </a>
                 <input name="vote" value="<?=$candidate['id']?>" type="radio" style="float: right;">
               </h4>
             </div>
-            <div id="collapse<?=$candidate['id']?>" class="panel-collapse collapse in">
+            <div id="collapse<?=$candidate['id']?>" class="panel-collapse collapse">
               <div class="panel-body">
                 <?=$candidate['pitch']?>
                 <br>
