@@ -58,18 +58,13 @@
     </form>
 
     <div class="progress">
-      <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: <?= (int)(($_GET['step']/count($    _SESSION['votes']))*100) ?>%;">
+      <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: <?= (int)(($_GET['step']/count($_SESSION['votes']))*100) ?>%;">
         <span class="sr-only"><?= (int)(($_GET['step']/count($_SESSION['votes']))*100) ?>% Complete</span>
       </div>
     </div>
 
-    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="https://code.jquery.com/jquery.js"></script>
-    <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="resources/bootstrap/dist/js/bootstrap.min.js"></script>
-
     <script>
-      $('#continue').click(function () {
+      document.getElementById('continue').onclick = function () {
         var atLeastOneIsChecked = $('input:radio').is(':checked');
 
         if (!atLeastOneIsChecked) {
@@ -78,8 +73,5 @@
         } else {
           return true;
         }
-      });
+      };
     </script>
-  </div>
-  </body>
-</html>

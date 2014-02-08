@@ -106,9 +106,11 @@ switch ($position['voting'])
 {
     case AV:
         include 'vote-av.php';
+        include 'common/footer.php';
         exit;
 
     case FPTP:
         include 'vote-fptp.php';
+        include 'common/footer.php';
         exit;
 }
