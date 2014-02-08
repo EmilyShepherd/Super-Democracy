@@ -34,11 +34,9 @@ else
 
     if ($position = $position->fetch_assoc())
     {
-        //var_dump($position);
-
         $cas = $db->query
         (
-              'SELECT * FROM candidate, person '
+              'SELECT *, candidate.id as candidate_id FROM person, candidate '
             . 'WHERE position_id=' . $position['id'] . ' '
             . 'AND election_id=' . (int)$_GET['election'] . ' '
             . 'AND person_id=person.id'
@@ -46,7 +44,8 @@ else
 
         while ($candidate = $cas->fetch_assoc())
         {
-            $candidates[] = $candidate;
+            $candidate['id'] = $candidate['candidate_id'];
+            $candidates[]    = $candidate;
         }
     }
     else
