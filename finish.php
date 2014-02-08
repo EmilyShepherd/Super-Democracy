@@ -14,6 +14,16 @@ include 'common/header.php';
 <body>
   <div id="delimiter" style="text-align: center;">
     <h1 style="text-align: center;">You are about to cast your vote</h1>
+   <div class="progress progress-striped">
+     <div class="progress-bar"
+          role="progressbar"
+          aria-valuenow="60"
+          aria-valuemin="0"
+          aria-valuemax="100"
+          style="width: 100%;">
+     </div>
+   </div>
+   <p style="text-align: center;">100% Complete</p>
 
 <?php
 
