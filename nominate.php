@@ -98,9 +98,9 @@
       </form>
 
       <footer>
-        <h4>Such copyright, many rights reserved</h3>
+        <b>Such copyright, many rights reserved</b>
       </footer>
     </div>
 
 <?php
-    include 'common/footer.php';
+    include 'common/footer.php'; ?>
