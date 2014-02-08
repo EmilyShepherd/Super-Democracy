@@ -23,6 +23,13 @@
           height: 100px;
           margin: 0 0 0 0;
       }
+      
+      #delimiter
+      {
+        max-width:800px;
+        margin-left:auto;
+        margin-right:auto;
+      }
     </style>
 
     <!-- Bootstrap -->
@@ -36,6 +43,7 @@
     <![endif]-->
   </head>
   <body>
+    <div id="delimiter">
     <h1><?=$position['name']?></h1>
 
     <p><?=$position['description']?></p>
@@ -77,5 +85,6 @@
     <script src="https://code.jquery.com/jquery.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="resources/bootstrap/dist/js/bootstrap.min.js"></script>
+  </div>
   </body>
 </html>

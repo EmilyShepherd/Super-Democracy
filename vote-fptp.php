@@ -24,6 +24,13 @@
          height: 100px;
           margin: 0 0 0 0;
       }
+      
+      #delimiter
+      {
+        max-width:800px;
+        margin-left:auto;
+        margin-right:auto;
+      }
     </style>
 
     <!-- Bootstrap -->
@@ -37,6 +44,7 @@
     <![endif]-->
   </head>
   <body>
+    <div id="delimiter">
     <h1><?=$position['name']?></h1>
 
     <p><?=$position['description']?></p>
@@ -110,5 +118,6 @@
         }
       });
     </script>
+  </div>
   </body>
 </html>
