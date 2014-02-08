@@ -36,7 +36,9 @@
     <![endif]-->
   </head>
   <body>
-    <h1>President</h1>
+    <h1><?=$position['name']?></h1>
+
+    <p><?=$position['description']?></p>
 
     <h2>Candidates available for selection</h2>
     <div id="unselectedCandidates">
