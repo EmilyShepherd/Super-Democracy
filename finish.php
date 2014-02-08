@@ -1,5 +1,7 @@
 <?php
 
+$title = 'Vote';
+
 include 'model/database.php';
 
 session_start();
@@ -11,7 +13,7 @@ include 'common/header.php';
 </head>
 <body>
   <div id="delimiter">
-    <h1>You are about to cast your vote</h1>
+    <h1 style="text-align: center;">You are about to cast your vote</h1>
 
 <?php
 
@@ -30,14 +32,14 @@ foreach ($_SESSION['voted'] as $vote)
             . 'AND person_id=person.id'
         )->fetch_assoc();
 
-        echo '<h2>' . $position['name'] . '</h2>';
+        echo '<h3>' . $position['name'] . '</h3>';
         echo '<p>' . $ca['name'] . '</p>';
     }
     elseif (isset($vote['candidate']))
     {
         asort($vote['candidate']);
 
-        echo '<h2>' . $position['name'] . '</h2>';
+        echo '<h3>' . $position['name'] . '</h3>';
 
         foreach ($vote['candidate'] as $ca => $order)
         {

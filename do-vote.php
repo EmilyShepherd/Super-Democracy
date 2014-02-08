@@ -104,8 +104,10 @@ include 'common/header.php';
 
 ?>
 <div id="delimiter">
-<h1>Success!</h1>
+<h1 style="text-align: center;" >Success!</h1>
 </div>
+
+<p>Your vote has been anonymously recoreded
 
 <?php
     include 'common/footer.php';

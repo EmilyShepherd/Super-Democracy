@@ -2,13 +2,13 @@
   <body>
   
     <div id="delimiter">
-    <h1><?=$position['name']?></h1>
+    <h1 style="text-align: center;"><?=$position['name']?></h1>
 
     <button onclick="window.location.href = 'vote.php?step=<?=$_GET['step'] + 1?>'" type="button" class="btn btn-default" style="float: right;">Skip</button>
 
     <p><?=$position['description']?></p>
 
-    <h2>Candidates available for selection</h2>
+    <b>Candidates available for selection</b>
     <div id="unselectedCandidates">
       <div class="panel-group" id="accordion1">
         <?php foreach ($candidates as $candidate) : ?>
