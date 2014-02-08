@@ -30,7 +30,7 @@ include 'common/header.php';
 foreach ($_SESSION['voted'] as $vote)
 {
     $position = $_SESSION['votes'][$vote['step']];
-    $position = $db->query("SELECT * FROM position WHERE id=" . ((int ) $position[0]));
+    $position = $db->query("SELECT * FROM position WHERE id=" . (int)$position[0]);
     $position = $position->fetch_assoc();
 
     if (isset($vote['vote']))
@@ -51,7 +51,6 @@ foreach ($_SESSION['voted'] as $vote)
 
         echo '<h2>' . $position['name'] . '</h2>';
 
-        echo("<ol>");
         foreach ($vote['candidate'] as $ca => $order)
         {
             $ca = $db->query
@@ -61,9 +60,8 @@ foreach ($_SESSION['voted'] as $vote)
                 . 'AND person_id=person.id'
             )->fetch_assoc();
 
-            echo '<li>' . $ca['name'] . '</li>';
+            echo '<b>' . ($order + 1) . '</b> ' . $ca['name'] . '<br />';
         }
-        echo("</ol>");
     }
 }
 
