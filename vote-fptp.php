@@ -24,7 +24,7 @@
          height: 100px;
           margin: 0 0 0 0;
       }
-      
+
       #delimiter
       {
         max-width:800px;
