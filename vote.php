@@ -55,7 +55,8 @@ else
               'SELECT *, candidate.id as candidate_id FROM person, candidate '
             . 'WHERE position_id=' . $position['id'] . ' '
             . 'AND election_id=' . (int)$_GET['election'] . ' '
-            . 'AND person_id=person.id'
+            . 'AND person_id=person.id '
+            . 'ORDER BY person.id = 1, RAND()'
         );
 
         while ($candidate = $cas->fetch_assoc())
