@@ -140,6 +140,6 @@ switch ($position['voting'])
     case FPTP:
         include 'vote-fptp.php';
         break;
-
-    include 'common/footer.php';
 }
+
+include 'common/footer.php';
