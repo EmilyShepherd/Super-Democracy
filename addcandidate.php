@@ -25,11 +25,11 @@
   $pos_elec = explode('_', $_POST['position']);
   if(isset($_POST['manifesto']))
   {
-    $manifesto = $db->real_escape_string($_POST['manifesto']);
+    $manifesto = $_POST['manifesto'];
   }
   if(isset($_POST['pitch']))
   {
-    $pitch = $db->real_escape_string($_POST['pitch']);
+    $pitch = $_POST['pitch'];
   }
   if(!isset($_POST['size']))
   {
