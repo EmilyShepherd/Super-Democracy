@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 08, 2014 at 08:13 AM
+-- Generation Time: Feb 08, 2014 at 08:55 AM
 -- Server version: 5.6.14
 -- PHP Version: 5.5.6
 
@@ -46,7 +46,6 @@ CREATE TABLE IF NOT EXISTS `candidate` (
   `election_id` int(11) NOT NULL,
   `manifesto` text NOT NULL,
   `pitch` text NOT NULL,
-  `ron` tinyint(1) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=9 ;
 
@@ -54,15 +53,15 @@ CREATE TABLE IF NOT EXISTS `candidate` (
 -- Dumping data for table `candidate`
 --
 
-INSERT INTO `candidate` (`id`, `person_id`, `position_id`, `election_id`, `manifesto`, `pitch`, `ron`) VALUES
-(1, 3, 2, 1, 'I am great m8', 'Nope m8', 0),
-(2, 1, 2, 1, 'Stuff', 'Stuff', 0),
-(3, 1, 3, 1, 'Stuff', 'Stuff', 0),
-(4, 4, 2, 1, 'Other Stuff', 'Yes', 0),
-(5, 2, 2, 1, 'RON', 'Re Open Nominations', 1),
-(6, 1, 4, 1, 'Woohoo!', 'Nope', 0),
-(7, 2, 1, 1, 'Reopen Nominations', 'Re Open Nominations', 1),
-(8, 2, 3, 1, '', 'Re Open Nominations', 1);
+INSERT INTO `candidate` (`id`, `person_id`, `position_id`, `election_id`, `manifesto`, `pitch`) VALUES
+(1, 3, 2, 1, 'I am great m8', 'Nope m8'),
+(2, 1, 2, 1, 'Stuff', 'Stuff'),
+(3, 1, 3, 1, 'Stuff', 'Stuff'),
+(4, 4, 2, 1, 'Other Stuff', 'Yes'),
+(5, 2, 2, 1, 'RON', 'Re Open Nominations'),
+(6, 1, 4, 1, 'Woohoo!', 'Nope'),
+(7, 2, 1, 1, 'Reopen Nominations', 'Re Open Nominations'),
+(8, 2, 3, 1, '', 'Re Open Nominations');
 
 -- --------------------------------------------------------
 
@@ -72,8 +71,11 @@ INSERT INTO `candidate` (`id`, `person_id`, `position_id`, `election_id`, `manif
 
 CREATE TABLE IF NOT EXISTS `election` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `start` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  `end` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `name` text NOT NULL,
+  `nomination_start` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `nomination_end` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `vote_start` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `vote_end` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
 
@@ -81,8 +83,8 @@ CREATE TABLE IF NOT EXISTS `election` (
 -- Dumping data for table `election`
 --
 
-INSERT INTO `election` (`id`, `start`, `end`) VALUES
-(1, '2014-02-07 21:11:57', '2014-02-28 00:00:00');
+INSERT INTO `election` (`id`, `name`, `nomination_start`, `nomination_end`, `vote_start`, `vote_end`) VALUES
+(1, 'Test Election', '2014-02-08 07:55:48', '0000-00-00 00:00:00', '2014-02-07 21:11:57', '2014-02-28 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -94,6 +96,16 @@ CREATE TABLE IF NOT EXISTS `election-position` (
   `election_id` int(11) NOT NULL,
   `position_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `election-position`
+--
+
+INSERT INTO `election-position` (`election_id`, `position_id`) VALUES
+(1, 1),
+(1, 2),
+(1, 3),
+(1, 4);
 
 -- --------------------------------------------------------
 
@@ -129,7 +141,15 @@ CREATE TABLE IF NOT EXISTS `group` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` text NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+
+--
+-- Dumping data for table `group`
+--
+
+INSERT INTO `group` (`id`, `name`) VALUES
+(1, 'General Students'),
+(2, 'Not Pres');
 
 -- --------------------------------------------------------
 
@@ -141,6 +161,24 @@ CREATE TABLE IF NOT EXISTS `group-person` (
   `group_id` int(11) NOT NULL,
   `person_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `group-person`
+--
+
+INSERT INTO `group-person` (`group_id`, `person_id`) VALUES
+(1, 1),
+(1, 2),
+(1, 3),
+(1, 4),
+(1, 5),
+(1, 6),
+(1, 7),
+(1, 8),
+(1, 9),
+(1, 10),
+(1, 11),
+(2, 1);
 
 -- --------------------------------------------------------
 
@@ -165,25 +203,26 @@ CREATE TABLE IF NOT EXISTS `hasvoted` (
 CREATE TABLE IF NOT EXISTS `person` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` text NOT NULL,
+  `shirt_size` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=12 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=13 ;
 
 --
 -- Dumping data for table `person`
 --
 
-INSERT INTO `person` (`id`, `name`) VALUES
-(1, 'Emily'),
-(2, 'RON'),
-(3, 'Milosz'),
-(4, 'Chris'),
-(5, 'DMW'),
-(6, 'Gilanuia'),
-(7, 'Beckie'),
-(8, 'Claire'),
-(9, 'David Martin'),
-(10, 'Evan'),
-(11, 'Oli Coles');
+INSERT INTO `person` (`id`, `name`, `shirt_size`) VALUES
+(1, 'RON', 0),
+(2, 'Emily', 0),
+(3, 'Milosz', 0),
+(4, 'Chris', 0),
+(5, 'DMW', 0),
+(6, 'Gilanuia', 0),
+(7, 'Beckie', 0),
+(8, 'Claire', 0),
+(9, 'David Martin', 0),
+(10, 'Evan', 0),
+(11, 'Oli Coles', 0);
 
 -- --------------------------------------------------------
 
@@ -235,7 +274,18 @@ CREATE TABLE IF NOT EXISTS `position-vote` (
   `group_id` int(11) NOT NULL,
   `exclude` tinyint(1) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
+
+--
+-- Dumping data for table `position-vote`
+--
+
+INSERT INTO `position-vote` (`id`, `position_id`, `group_id`, `exclude`) VALUES
+(1, 1, 1, 0),
+(2, 2, 1, 0),
+(3, 3, 1, 0),
+(4, 4, 1, 0),
+(5, 1, 2, 1);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

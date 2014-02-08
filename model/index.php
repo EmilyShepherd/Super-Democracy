@@ -5,7 +5,7 @@ include 'database.php';
 $elections = $db->query
 (
       'SELECT * FROM election '
-    . 'WHERE start < NOW() AND NOW() < end '
+    . 'WHERE vote_start < NOW() AND NOW() < vote_end '
     . ''
 );
 $user = 1;
