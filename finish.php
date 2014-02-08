@@ -4,10 +4,11 @@ include 'model/database.php';
 
 session_start();
 
+include 'common/header.php';
+
 ?>
 
 <h1>You are about to cast your vote</h1>
-
 
 <?php
 
@@ -52,3 +53,6 @@ foreach ($_SESSION['voted'] as $vote)
 ?>
 
 <button onclick="location.href='do-vote.php';">Cast Vote</button>
+
+<?php
+    include 'common/footer.php';
