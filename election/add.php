@@ -128,9 +128,6 @@ if ($_POST)
 
       </form>
 
-      <footer>
-        <h4>Such copyright, many rights reserved</h3>
-      </footer>
     </div>
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
