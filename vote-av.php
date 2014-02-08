@@ -27,9 +27,9 @@
                         $thumb = $thumb->fetch_assoc();
                         if(!empty($thumb['image'])):
                       ?>
-                    <img src=<?=$thumb['image']?>>
+                    <img src="<?=$thumb['image']?>" alt="<?=$candidate['name']?>">
                       <?php else: ?>
-                    <img src="/thumbs/no-icon.jpg">
+                    <img src="/thumbs/no-icon.jpg" alt="<?=$candidate['name']?>">
                       <?php endif ?>
                   </div>
                   <?=$candidate['name']?>
