@@ -67,8 +67,8 @@ include 'model/index.php';
               </div>
             <?php endforeach ?>
             <div class="button_list">
-              <input type="submit" class="btn btn-primary btn-lg" name="submit" value="Vote!" />
-              <input type="reset" class="btn btn-default btn-lg" name="reset" value="Check all" />
+              <input type="reset" class="btn btn-default btn-lg" name="reset" value="Check all" style="float: right;" />
+              <input type="submit" class="btn btn-primary btn-lg" name="submit" value="Vote!" style="position: relative; left: 52px; display: block; margin-left: auto; margin-right: auto;" />
             </div>
           </div>
         </form>
