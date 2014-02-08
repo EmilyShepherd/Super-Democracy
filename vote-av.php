@@ -53,6 +53,7 @@
       <div class="panel-group" id="accordion1">
         <?php foreach ($candidates as $candidate) : ?>
           <div id="candidate<?=$candidate['id']?>" class="panel panel-default">
+            <input type="hidden" name="candidate[<?=$candidate['id']?>]" value="" />
             <div class="panel-heading">
               <h4 class="panel-title candidate">
                 <a id="moveable<?=$candidate['id']?>" data-toggle="collapse" data-parent="#accordion1" href="#collapse<?=$candidate['id']?>">
@@ -87,13 +88,17 @@
     </div>
 
     <h2>Selected Candidates</h2>
-    <div id="selectedCandidates">
-      Select candidates from the list above to begin ranking
-      <div class="panel-group" id="accordion2">
-      </div>
-    </div>
+    <form action="vote.php" method="post">
+      <input type="hidden" name="step" value="<?=$_GET['step']?>" />
 
-    <button type="button" class="btn btn-primary">Continue</button>
+      <div id="selectedCandidates">
+        Select candidates from the list above to begin ranking
+        <div class="panel-group" id="accordion2">
+        </div>
+      </div>
+
+      <input id="continue" type="submit" class="btn btn-primary" value="Continue" />
+    </form>
 
     <?php foreach ($candidates as $candidate) : ?>
       <div class="modal fade" id="manifesto<?=$candidate['id']?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -141,6 +146,14 @@
 
           select.picked = true;
           select.textContent = "Deselect";
+        }
+
+        var inputs = document.getElementById("accordion2").getElementsByTagName("input");
+
+        for (var i=0; i<inputs.length; i++) {
+          var input = inputs[i];
+
+          input.value = i;
         }
       }
 
