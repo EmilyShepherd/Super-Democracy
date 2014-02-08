@@ -1,10 +1,43 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Add an Election</title>
+<?php
+
+$title = 'Add an Election';
+
+include '../model/database.php';
+include '../common/header.php';
+
+$positions = $db->query('SELECT * FROM position');
+
+if ($_POST)
+{
+    $db->query
+    (
+          'INSERT INTO election'
+        . '('
+        .     '`name`,'
+        .     '`nomination_start`,'
+        .     '`nomination_end`,'
+        .     '`vote_start`,'
+        .     '`vote_end`'
+        . ') '
+        . 'VALUES'
+        . '('
+        .     '\'' . $db->real_escape_string($_POST['name'])                  . '\','
+        .     '\'' . $db->real_escape_string($_POST['nominations-starttime']) . '\','
+        .     '\'' . $db->real_escape_string($_POST['nominations-endtime'])   . '\','
+        .     '\'' . $db->real_escape_string($_POST['voting-starttime'])      . '\','
+        .     '\'' . $db->real_escape_string($_POST['voting-endtime'])        . '\''
+        . ')'
+    );
+
+    $id = $db->insert_id;
+
+    foreach ($_POST['positions'] as $pos)
+    {
+        $db->query('INSERT INTO `election-position` VALUES(' . $id . ',' . (int)$pos . ')');
+    }
+}
+
+?>
 
     <style>
       .pos_name
@@ -72,8 +105,6 @@
         <h1>Add an Election</h1>
       </header>
 
-      <?php include '../model/index.php' ?>
-
       <form action="add.php" method="post">
         <h2>Name</h2>
         <input type="text" name="name" />
@@ -87,6 +118,13 @@
         End Time: <input type="datetime-local" name="voting-endtime">
 
         <h2>Positions</h2>
+        <select name="positions[]" multiple="multiple">
+          <?php while ($position = $positions->fetch_assoc()) : ?>
+            <option value="<?=$position['id']?>">
+              <?=$position['name']?>
+            </option>
+          <?php endwhile ?>
+        </select>
 
       </form>
 
