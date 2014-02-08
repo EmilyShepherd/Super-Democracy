@@ -91,12 +91,14 @@ else
     {
       height: 100px;
       width: 130px;
+      font-size: large;
     }
 
     .arrbutton
     {
       height: 100px;
       width: 50px;
+      font-size: large;
     }
     </style>
 <?php
