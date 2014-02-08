@@ -3,6 +3,11 @@
 
     include 'common/header.php'
 ?>
+    <script src="resources/tinymce/tinymce.min.js"></script>
+    <script>
+      tinymce.init({selector:'textarea'});
+    </script>
+
     <style>
       .pos_name
       {
