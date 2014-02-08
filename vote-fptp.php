@@ -47,7 +47,7 @@
               <div class="panel-body">
                 <?=$candidate['pitch']?>
                 <br>
-                <button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#manifesto<?=$candidate['id']?>">
+                <button onclick="return false;" class="btn btn-primary" data-toggle="modal" data-target="#manifesto<?=$candidate['id']?>">
                   View Manifesto
                 </button>
               </div>
