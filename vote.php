@@ -63,6 +63,37 @@ else
             $candidate['id'] = $candidate['candidate_id'];
             $candidates[]    = $candidate;
         }
+
+        $title = "Vote for " . $position;
+
+        include 'common/header.php';
+?>
+    <style>
+    .candidate {
+        height: 100px;
+    }
+
+    .thumb {
+        width: 100px;
+        height: 100px;
+        overflow: hidden;
+        float: left;
+    }
+
+    .thumb img {
+        width: 100px;
+        height: 100px;
+        margin: 0 0 0 0;
+    }
+
+    #delimiter
+    {
+        max-width:800px;
+        margin-left:auto;
+        margin-right:auto;
+    }
+    </style>
+<?php
     }
     else
     {
