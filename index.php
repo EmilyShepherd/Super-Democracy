@@ -38,9 +38,9 @@ include 'model/index.php';
       </header>
 
       <?php if (!$positions) : ?>
-        <p>Sorry, there are no elections for you to vote for</p>
+        <p style="text-align: center;">Sorry, there are no elections for you to vote for</p>
       <?php else : ?>
-        <p>Which elections would you like to vote in?</p>
+        <p style="text-align: center;">Which elections would you like to vote in?</p>
 
         <form action="startvote.php" method="post">
           <div class="panel-group" id="positions">
@@ -74,9 +74,6 @@ include 'model/index.php';
         </form>
       <?php endif ?>
 
-      <footer style="text-align: center;">
-        <b>Such copyright, many rights reserved</b>
-      </footer>
     </div>
 <?php
     include 'common/footer.php';

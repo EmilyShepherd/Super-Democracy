@@ -103,11 +103,10 @@ $title = "Vote Success";
 include 'common/header.php';
 
 ?>
-<div id="delimiter">
-<h1 style="text-align: center;" >Success!</h1>
+<div id="delimiter" style="text-align: center;">
+  <h1>Success!</h1>
+  <p>Your vote has been anonymously recorded</p>
 </div>
-
-<p>Your vote has been anonymously recoreded
 
 <?php
     include 'common/footer.php';

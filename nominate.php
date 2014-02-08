@@ -102,9 +102,6 @@
         </div>
       </form>
 
-      <footer>
-        <b>Such copyright, many rights reserved</b>
-      </footer>
     </div>
 
 <?php
