@@ -34,7 +34,7 @@ include 'model/index.php';
   <body>
     <div id="delimiter">
       <header>
-        <h1 style="text-align: center;">Super Democracy Elections</h1>
+        <h1 style="text-align: center;">SUSU Elections</h1>
       </header>
 
       <?php if (!$positions) : ?>
