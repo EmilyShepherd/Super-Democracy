@@ -2,10 +2,7 @@
 
 session_start();
 
-if (!isset($_SESSION))
-{
-    $_SESSION = array( );
-}
+$_SESSION = array( );
 
 if ($_POST && isset($_POST['vote_in']))
 {
@@ -18,7 +15,6 @@ if ($_POST && isset($_POST['vote_in']))
 if (count($_SESSION['votes']))
 {
     header('Location: vote.php?step=0');
-    //header('Location: vote.php?position=' . $_SESSION['votes'][0][0] .  '&election=' . $_SESSION['votes'][0][1]);
 }
 else
 {
