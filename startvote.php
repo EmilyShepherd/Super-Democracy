@@ -2,6 +2,8 @@
 
 session_start();
 
+$_SESSION['votes'] = array( );
+
 if ($_POST && isset($_POST['vote_in']))
 {
     foreach ($_POST['vote_in'] as $vote)
