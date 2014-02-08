@@ -6,15 +6,31 @@
     echo "no POST, no candidate to add!";
     exit;
   }
-  if(!$_SESSION['user_id'])
+  if(!isset($_SESSION['user_id']))
   {
     echo "no user logged in";
     exit;
   }
   $user_id = $_SESSION['user_id'];
+  if(!isset($_POST['position']))
+  {
+    echo 'No position specified';
+    exit;
+  }
   $pos_elec = explode('_', $_POST['position']);
-  $manifesto = $db->real_escape_string($_POST['manifesto']);
-  $pitch = $db->real_escape_string($_POST['pitch']);
+  if(isset($_POST['manifesto']))
+  {
+    $manifesto = $db->real_escape_string($_POST['manifesto']);
+  }
+  if(isset($_POST['pitch']))
+  {
+    $pitch = $db->real_escape_string($_POST['pitch']);
+  }
+  if(!isset($_POST['size']))
+  {
+    echo 'No shirt size!';
+    exit;
+  }
   $shirt_size = (int)$_POST['size'];
   if(!empty($_FILES['photo']['name']))
   {
