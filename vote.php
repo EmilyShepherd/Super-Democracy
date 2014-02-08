@@ -26,7 +26,7 @@ if ($_POST)
     exit;
 }
 
-if (!isset($_GET['step']))
+if (!isset($_GET['step']) || !isset($_SESSION['votes'][$_GET['step']]))
 {
     include 'vote-error.php';
     exit;
