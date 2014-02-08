@@ -30,7 +30,7 @@ include 'common/header.php';
 foreach ($_SESSION['voted'] as $vote)
 {
     $position = $_SESSION['votes'][$vote['step']];
-    $position = $db->query("SELECT * FROM position WHERE id=" . $position[0]);
+    $position = $db->query("SELECT * FROM position WHERE id=" . ((int ) $position[0]));
     $position = $position->fetch_assoc();
 
     if (isset($vote['vote']))
