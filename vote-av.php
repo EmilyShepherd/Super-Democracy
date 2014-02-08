@@ -55,7 +55,7 @@
           <div class="panel panel-default">
             <div class="panel-heading">
               <h4 class="panel-title candidate">
-                <a data-toggle="collapse" data-parent="#accordion1" href="#collapseOne">
+                <a data-toggle="collapse" data-parent="#accordion1" href="#collapse<?=$candidate['id']?>">
                   <div class="thumb">
                     <img src="thumbs/teddy.jpg">
                   </div>
@@ -64,9 +64,29 @@
                 <button type="button" class="btn btn-default" style="float: right;">Select</button>
               </h4>
             </div>
-            <div id="collapseOne" class="panel-collapse collapse in">
+            <div id="collapse<?=$candidate['id']?>" class="panel-collapse collapse">
               <div class="panel-body">
                 <?=$candidate['pitch']?>
+                <button onclick="return false;" style="float: right;" class="btn btn-primary" data-toggle="modal" data-target="#manifesto<?=$candidate['id']?>">
+                  View Manifesto
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div class="modal fade" id="manifesto<?=$candidate['id']?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                  <h4 class="modal-title" id="myModalLabel">View Manifesto</h4>
+                </div>
+                <div class="modal-body">
+                  <?=$candidate['manifesto']?>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
               </div>
             </div>
           </div>
