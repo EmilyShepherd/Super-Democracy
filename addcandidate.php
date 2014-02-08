@@ -16,11 +16,23 @@
   $manifesto = $db->real_escape_string($_POST['manifesto']);
   $pitch = $db->real_escape_string($_POST['pitch']);
   $shirt_size = (int)$_POST['size'];
-  $file = $_FILES['photo']['tmp_name'];
-  $extension = pathinfo($_FILES['photo']['name'], 4);
-  $target_path = "thumbs/candidate_" . md5_file($file) . '.' . $extension;
-  echo $target_path;
-  move_uploaded_file($file, $target_path);
+  if(!empty($_FILES['photo']['name']))
+  {
+    $file = $_FILES['photo']['tmp_name'];
+    $extension = strtolower(pathinfo($_FILES['photo']['name'], 4));
+    $target_path = "thumbs/candidate_" . md5_file($file) . '.' . $extension;
+    echo $target_path;
+    move_uploaded_file($file, $target_path);
+    if(!in_array($extension, ['png', 'jpg', 'jpeg', 'gif']))
+    {
+      echo "Unsupported image extension!";
+      exit;
+    }
+    $db->query
+    (
+      'UPDATE person SET image = "' . $target_path . '"' . ' WHERE `person`.`id` = ' . $user_id
+    );
+  }
   $db->query
   (
     'INSERT INTO candidate(person_id, position_id, election_id, manifesto, pitch) '
@@ -28,7 +40,7 @@
   );
   $db->query
   (
-    'UPDATE person SET image = "' . $target_path . '", `shirt_size` = ' . $shirt_size . ' WHERE `person`.`id` = ' . $user_id
+    'UPDATE person SET `shirt_size` = ' . $shirt_size . ' WHERE `person`.`id` = ' . $user_id
   );
   echo $db->error;
   echo (int)$user_id . ',' . (int)$pos_elec[0] . ',' . (int)$pos_elec[1] . ',' . $manifesto . ',' . $pitch . ',' . $shirt_size;
