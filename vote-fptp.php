@@ -23,8 +23,10 @@
                           'SELECT image FROM person WHERE person.id = ' . (int)$candidate['person_id']
                         );
                         $thumb = $thumb->fetch_assoc();
+                        if(!empty($thumb['image'])):
                       ?>
                     <img src=<?=$thumb['image']?>>
+                      <?php endif ?>
                   </div>
                   <?=$candidate['name']?>
                 </a>
