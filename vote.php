@@ -93,6 +93,18 @@ else
         margin-left:auto;
         margin-right:auto;
     }
+    
+    .bigbutton
+    {
+      height: 100px;
+      width: 130px;
+    }
+    
+    .arrbutton
+    {
+      height: 100px;
+      width: 50px;
+    }
     </style>
 <?php
     }

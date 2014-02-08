@@ -32,7 +32,7 @@
                   </div>
                   <?=$candidate['name']?>
                 </a>
-                <input name="vote" value="<?=$candidate['id']?>" type="radio" style="float: right;">
+                <input name="vote" value="<?=$candidate['id']?>" type="radio" style="float: right;" onclick="event.cancelBubble = true;">
               </h4>
             </div>
             <div id="collapse<?=$candidate['id']?>" class="panel-collapse collapse">

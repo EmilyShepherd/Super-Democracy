@@ -34,14 +34,14 @@
                   </div>
                   <?=$candidate['name']?>
                 </a>
-                <button id="select<?=$candidate['id']?>" type="button" class="btn btn-default" style="float: right;" onclick="move(this, <?=$candidate['id']?>);">
+                <button id="select<?=$candidate['id']?>" type="button" class="btn btn-default bigbutton" style="float: right;" onclick="move(this, <?=$candidate['id']?>); event.cancelBubble = true;">
                   Select
                 </button>
 
-                <button id="up<?=$candidate['id']?>" type="button" class="btn btn-success" style="float: right; display: none;" onclick="up(<?=$candidate['id']?>);">
+                <button id="up<?=$candidate['id']?>" type="button" class="btn btn-success arrbutton" style="float: right; display: none;" onclick="up(<?=$candidate['id']?>); event.cancelBubble = true;">
                   <span class="glyphicon glyphicon-arrow-up"></span>
                 </button>
-                <button id="down<?=$candidate['id']?>" type="button" class="btn btn-danger" style="float: right; display: none;" onclick="down(<?=$candidate['id']?>);">
+                <button id="down<?=$candidate['id']?>" type="button" class="btn btn-danger arrbutton" style="float: right; display: none;" onclick="down(<?=$candidate['id']?>); event.cancelBubble = true;">
                   <span class="glyphicon glyphicon-arrow-down"></span>
                 </button>
               </h4>
