@@ -16,7 +16,15 @@
               <h4 class="panel-title candidate">
                 <a data-toggle="collapse" data-parent="#accordion1" href="#collapse<?=$candidate['id']?>">
                   <div class="thumb">
-                    <img src="thumbs/teddy.jpg">
+                      <?php
+                        include 'model/database.php';
+                        $thumb = $db->query
+                        (
+                          'SELECT image FROM person WHERE person.id = ' . (int)$candidate['person_id']
+                        );
+                        $thumb = $thumb->fetch_assoc();
+                      ?>
+                    <img src=<?=$thumb['image']?>>
                   </div>
                   <?=$candidate['name']?>
                 </a>
