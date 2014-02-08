@@ -28,6 +28,8 @@
                         if(!empty($thumb['image'])):
                       ?>
                     <img src=<?=$thumb['image']?>>
+                      <?php else: ?>
+                    <img src="/thumbs/no-icon.jpg">
                       <?php endif ?>
                   </div>
                   <?=$candidate['name']?>
