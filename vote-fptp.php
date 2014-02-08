@@ -11,10 +11,10 @@
 
       <div class="panel-group" id="accordion1">
         <?php foreach ($candidates as $candidate) : ?>
-          <div class="panel panel-default">
+          <div id="candidate<?=$candidate['id']?>" class="panel panel-default" onclick="document.getElementById('moveable<?=$candidate['id']?>').click();" style="cursor: pointer">
             <div class="panel-heading">
               <h4 class="panel-title candidate">
-                <a data-toggle="collapse" data-parent="#accordion1" href="#collapse<?=$candidate['id']?>">
+                <a id="moveable<?=$candidate['id']?>" data-toggle="collapse" data-parent="#accordion1" href="#collapse<?=$candidate['id']?>">
                   <div class="thumb">
                       <?php
                         include 'model/database.php';

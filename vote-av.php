@@ -12,7 +12,7 @@
     <div id="unselectedCandidates">
       <div class="panel-group" id="accordion1">
         <?php foreach ($candidates as $candidate) : ?>
-          <div id="candidate<?=$candidate['id']?>" class="panel panel-default">
+          <div id="candidate<?=$candidate['id']?>" class="panel panel-default" onclick="document.getElementById('moveable<?=$candidate['id']?>').click();" style="cursor: pointer">
             <input type="hidden" name="candidate[<?=$candidate['id']?>]" value="" />
             <div class="panel-heading">
               <h4 class="panel-title candidate">
