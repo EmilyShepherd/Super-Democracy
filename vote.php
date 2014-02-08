@@ -13,7 +13,17 @@ $candidates = array( );
 if ($_POST)
 {
     $_SESSION['voted'][$_POST['step']] = $_POST;
-    header('Location: ?step=' . ((int)$_POST['step'] + 1));
+
+    if ((int)$_POST['step'] == count($_SESSION['votes']))
+    {
+        header('Location: finish.php');
+    }
+    else
+    {
+        header('Location: ?step=' . ((int)$_POST['step'] + 1));
+    }
+
+    exit;
 }
 
 if (!isset($_GET['step']))
