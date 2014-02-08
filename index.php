@@ -9,9 +9,10 @@
         font-weight: bold;
       }
 
-      img.top
+      img.thumb
       {
-        vertical-align:text-top;
+        float: left;
+        margin-right: 5px;
       }
 
       /* For large checkboxes, should we choose to use them */
@@ -53,7 +54,7 @@
               <div id="desc_<?= $position['id'] ?>_<?= $position['election_id'] ?>" class="panel-collapse collapse">
                 <div class="panel-body">
                   <p class="description">
-                    <img class="top" src="/images/position_<?= $position['id'] ?>.png" alt="<?= $position['name']?>"/>
+                    <img class="thumb" src="/images/position_<?= $position['id'] ?>.png" alt="<?= $position['name']?>"/>
                     <?= $position['description']?>
                   </p>
                 </div>
