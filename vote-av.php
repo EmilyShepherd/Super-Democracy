@@ -66,10 +66,10 @@
                   Select
                 </button>
 
-                <button id="up<?=$candidate['id']?>" type="button" class="btn btn-default" style="float: right; display: none;" onclick="up(<?=$candidate['id']?>);">
+                <button id="up<?=$candidate['id']?>" type="button" class="btn btn-success" style="float: right; display: none;" onclick="up(<?=$candidate['id']?>);">
                   <span class="glyphicon glyphicon-arrow-up"></span>
                 </button>
-                <button id="down<?=$candidate['id']?>" type="button" class="btn btn-default" style="float: right; display: none;" onclick="down(<?=$candidate['id']?>);">
+                <button id="down<?=$candidate['id']?>" type="button" class="btn btn-danger" style="float: right; display: none;" onclick="down(<?=$candidate['id']?>);">
                   <span class="glyphicon glyphicon-arrow-down"></span>
                 </button>
               </h4>
@@ -148,6 +148,10 @@
           select.textContent = "Deselect";
         }
 
+        update();
+      }
+
+      function update() {
         var inputs = document.getElementById("accordion2").getElementsByTagName("input");
 
         for (var i=0; i<inputs.length; i++) {
@@ -155,14 +159,42 @@
 
           input.value = i;
         }
+
+        var buttons = document.getElementById("accordion2").getElementsByTagName("button");
+
+        var foundFirstUp = false;
+        var lastDown = null;
+        for (i=0; i<buttons.length; i++) {
+          var button = buttons[i];
+
+          if (!foundFirstUp && button.id.indexOf("up") === 0) {
+            button.disabled = "disabled";
+            foundFirstUp = true;
+            continue;
+          }
+
+          if (button.id.indexOf("down") === 0) {
+            lastDown = button;
+          }
+
+          button.disabled = "";
+        }
+
+        if (lastDown !== null) {
+          lastDown.disabled = "disabled";
+        }
       }
 
       function up(candidate) {
         $("#candidate" + candidate).after($("#candidate" + candidate).prev());
+
+        update();
       }
 
       function down(candidate) {
         $("#candidate" + candidate).before($("#candidate" + candidate).next());
+
+        update();
       }
     </script>
   </div>
