@@ -59,7 +59,7 @@
         </div>
       </div>
 
-      <input id="continue" type="submit" class="btn btn-primary" value="Continue" />
+      <input id="continue" type="submit" class="btn btn-primary btn-lg" value="Continue" style="display: block; margin-right: auto; margin-left: auto;" />
     </form>
 
     <?php foreach ($candidates as $candidate) : ?>

@@ -59,10 +59,8 @@
 
       <p id="noCandidateSelected" style="display: none;" class="bg-danger">Please select one candidate</p>
 
-      <input id="continue" type="submit" class="btn btn-primary" value="Continue" />
+      <input id="continue" type="submit" class="btn btn-primary btn-lg" value="Continue" style="display: block; margin-left: auto; margin-right: auto;" />
     </form>
-
-
 
     <script>
       document.getElementById('continue').onclick = function () {
