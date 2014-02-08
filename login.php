@@ -41,8 +41,12 @@ if ($_POST)
                       'INSERT INTO person(name, issname) '
                     . 'VALUES(\'' . $username . '\', \'' . $username . '\')'
                 );
-                echo $db->error;
                 $_SESSION['user_id'] = $db->insert_id;
+                $db->query
+                (
+                      'INSERT INTO `group-person`(`group_id`, `person_id`) '
+                    . 'VALUES (1, ' . $_SESSION['user_id'] . ')'
+                );
             }
 
             header('Location: /');
