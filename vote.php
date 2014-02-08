@@ -64,7 +64,7 @@ else
             $candidates[]    = $candidate;
         }
 
-        $title = "Vote for " . $position;
+        $title = "Vote for " . $position['name'];
 
         include 'common/header.php';
 ?>
