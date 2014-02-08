@@ -46,6 +46,8 @@
     <div id="delimiter">
     <h1><?=$position['name']?></h1>
 
+    <button onclick="window.location.href = 'vote.php?step=<?=$_GET['step'] + 1?>'" type="button" class="btn btn-default" style="float: right;">Skip</button>
+
     <p><?=$position['description']?></p>
 
     <h2>Candidates available for selection</h2>
