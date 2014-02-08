@@ -14,7 +14,7 @@ if ($_POST)
 {
     $_SESSION['voted'][$_POST['step']] = $_POST;
 
-    if ((int)$_POST['step'] == count($_SESSION['votes']))
+    if ((int)$_POST['step'] + 1 == count($_SESSION['votes']))
     {
         header('Location: finish.php');
     }
