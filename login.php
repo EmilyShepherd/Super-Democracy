@@ -18,7 +18,7 @@ if ($_POST)
         ldap_set_option($ds, LDAP_OPT_PROTOCOL_VERSION, 3);
         ldap_set_option($ds, LDAP_OPT_REFERRALS, 0);
 
-        if (ldap_bind($ds, $_POST['username'] . '@soton.ac.uk', $_POST['password'])) 
+        if (@ldap_bind($ds, $_POST['username'] . '@soton.ac.uk', $_POST['password'])) 
         {
             $username = $db->real_escape_string($_POST['username']);
             $user     = $db->query
@@ -32,7 +32,7 @@ if ($_POST)
             if ($user->num_rows)
             {
                 $user = $user->fetch_assoc();
-                $_SESSION['user'] = $user['id'];
+                $_SESSION['user_id'] = $user['id'];
             }
             else
             {
@@ -42,7 +42,7 @@ if ($_POST)
                     . 'VALUES(\'' . $username . '\', \'' . $username . '\')'
                 );
                 echo $db->error;
-                $_SESSION['user'] = $db->insert_id;
+                $_SESSION['user_id'] = $db->insert_id;
             }
 
             header('Location: /');

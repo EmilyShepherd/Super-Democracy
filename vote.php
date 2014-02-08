@@ -7,7 +7,7 @@ session_start();
 define('AV',   0);
 define('FPTP', 1);
 
-$user = 1;
+$user = $_SESSION['user_id'];
 $candidates = array( );
 
 if ($_POST)

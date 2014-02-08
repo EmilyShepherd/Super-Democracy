@@ -12,7 +12,7 @@ if (!isset($_SESSION['voted']))
     header('Location: /');
 }
 
-$user = 1;
+$user = $_SESSION['user_id'];
 
 $db->begin_transaction();
 $db->autocommit(false);
