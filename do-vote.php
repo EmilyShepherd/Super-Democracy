@@ -1,5 +1,9 @@
 <?php
 
+include 'model/database.php';
+
+session_start();
+
 foreach ($_SESSION['voted'] as $vote)
 {
     $position = $_SESSION['votes'][$vote['step']];
@@ -44,3 +48,7 @@ foreach ($_SESSION['voted'] as $vote)
         }
     }
 }
+
+?>
+
+<h1>Success!</h1>

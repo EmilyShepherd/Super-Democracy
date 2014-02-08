@@ -51,3 +51,4 @@ foreach ($_SESSION['voted'] as $vote)
 
 ?>
 
+<button onclick="location.href='do-vote.php';">Cast Vote</button>
