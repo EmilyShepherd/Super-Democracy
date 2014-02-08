@@ -1,3 +1,6 @@
 [submodule "resources/bootstrap"]
 	path = resources/bootstrap
 	url = https://github.com/twbs/bootstrap.git
+[submodule "resources/chart.js"]
+	path = resources/chart.js
+	url = https://github.com/nnnick/Chart.js.git

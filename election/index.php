@@ -12,6 +12,7 @@ $title = "Election " . $election;
 include '../common/header.php';
 
 ?>
+    <script src="/resources/chart.js/Chart.js"></script>
 </head>
 <body>
     <div id="delimiter">
@@ -82,7 +83,7 @@ include '../common/header.php';
                     }
 
                     foreach ($roundPrefs as $candidate) {
-                        $personVotes[(int) $candidate['candidate_id']] = $candidate['votes'];
+                        $personVotes[(int) $candidate['candidate_id']] = (int) $candidate['votes'];
                         $personName[(int) $candidate['candidate_id']] = $candidate['name'];
                     }
                 } else {
@@ -117,6 +118,32 @@ include '../common/header.php';
                     echo("No contest");
                     break;
                 }
+
+?>
+                <canvas id='round<?=$round?>' width='400' height='400' style="float: right;"></canvas>
+                <script>
+                (function() {
+                  var ctx = document.getElementById("round<?=$round?>").getContext("2d");
+                  var data = {
+                    labels: <?=json_encode(array_values($personName))?>,
+                    datasets: [
+                      {
+                        fillColor: "rgba(151,187,205,0.5)",
+                        strokeColor: "rgba(151,187,205,1)",
+                        data: <?=json_encode(array_values($personVotes))?>
+                      }
+                    ]
+                  }
+
+                  new Chart(ctx).Bar(data,{
+                    scaleOverride: true,
+                    scaleSteps: 3,
+                    scaleStepWidth: 1,
+                    scaleStartValue: 0,
+                  });
+                })();
+                </script>
+<?php
 
                 // Eliminate someone
                 $bottomCandidate = end(array_keys($personVotes));
