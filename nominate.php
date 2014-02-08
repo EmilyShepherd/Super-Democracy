@@ -46,6 +46,10 @@
     </style>
   </head>
   <body>
+  
+    <?php
+      session_start();
+    ?>
     <div id="delimiter">
       <header>
         <h1>Super Democracy Elections</h1>
@@ -54,7 +58,7 @@
       <?php include 'model/index.php' ?>
 
       <form action="addcandidate.php" method="post">
-        <p>I wish to nominate myself for the position of: <select>
+        <p>I wish to nominate myself for the position of: <select name="position">
           <?php foreach ($positions as $position): ?>
             <option value="<?=$position['id']?>_<?=$position['election_id']?>"><?=$position['name']?></option>
           <?php endforeach ?>
@@ -77,7 +81,7 @@
           <div class="points"><input class="points_field" name="points[]" type="text" value="" /></div>
         </div>
         <h2>The small print</h2>
-        <input type="checkbox" name="vote_in[]" value="legal"> m8 yes
+        <input type="checkbox" name="legal"> m8 yes
         <div class="button_list">
           <input type="submit" class="btn btn-primary" name="submit" value="Nominate" />
         </div>
