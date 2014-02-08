@@ -1,4 +1,6 @@
 <?php
+    $title = "Super Democracy";
+
     include 'common/header.php';
 ?>
     <style>
