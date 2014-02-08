@@ -12,7 +12,7 @@ include 'common/header.php';
 
 </head>
 <body>
-  <div id="delimiter">
+  <div id="delimiter" style="text-align: center;">
     <h1 style="text-align: center;">You are about to cast your vote</h1>
 
 <?php
@@ -32,15 +32,16 @@ foreach ($_SESSION['voted'] as $vote)
             . 'AND person_id=person.id'
         )->fetch_assoc();
 
-        echo '<h3>' . $position['name'] . '</h3>';
+        echo '<h2>' . $position['name'] . '</h2>';
         echo '<p>' . $ca['name'] . '</p>';
     }
     elseif (isset($vote['candidate']))
     {
         asort($vote['candidate']);
 
-        echo '<h3>' . $position['name'] . '</h3>';
+        echo '<h2>' . $position['name'] . '</h2>';
 
+        echo("<ol>");
         foreach ($vote['candidate'] as $ca => $order)
         {
             $ca = $db->query
@@ -50,14 +51,15 @@ foreach ($_SESSION['voted'] as $vote)
                 . 'AND person_id=person.id'
             )->fetch_assoc();
 
-            echo $order . ': ' . $ca['name'] . '<br />';
+            echo '<li>' . $ca['name'] . '</li>';
         }
+        echo("</ol>");
     }
 }
 
 ?>
 
-  <button class="btn btn-success btn-lg" onclick="location.href='do-vote.php';">Cast Vote</button>
+  <button class="btn btn-success btn-lg" onclick="location.href='do-vote.php';" style="display: block; margin-left: auto; margin-right: auto;">Cast Vote</button>
 
 </div>
 
