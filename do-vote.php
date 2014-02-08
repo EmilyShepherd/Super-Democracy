@@ -96,7 +96,8 @@ foreach ($_SESSION['voted'] as $vote)
 }
 
 $db->commit();
-session_destroy();
+unset($_SESSION['votes']);
+unset($_SESSION['voted']);
 
 $title = "Vote Success";
 
