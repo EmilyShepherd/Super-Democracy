@@ -1,8 +1,15 @@
-  </head>
-  <body>
-  
+</head>
+<body>
+
     <div id="delimiter">
     <h1 style="text-align: center;"><?=$position['name']?></h1>
+
+    <div class="progress progress-striped">
+      <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: <?= (int)(($_GET['step']/count($_SESSION['votes']))*100) ?>%;">
+        <span class="sr-only"><?= (int)(($_GET['step']/count($_SESSION['votes']))*100) ?>% Complete</span>
+      </div>
+    </div>
+    <p style="text-align: center;"><?= (int)(($_GET['step']/count($_SESSION['votes']))*100) ?>% Complete</p>
 
     <button onclick="window.location.href = 'vote.php?step=<?=$_GET['step'] + 1?>'" type="button" class="btn btn-default" style="float: right;">Skip</button>
 
@@ -90,12 +97,6 @@
         </div>
       </div>
     <?php endforeach ?>
-
-    <div class="progress">
-      <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: <?= (int)(($_GET['step']/count($_SESSION['votes']))*100) ?>%;">
-        <span class="sr-only"><?= (int)(($_GET['step']/count($_SESSION['votes']))*100) ?>% Complete</span>
-      </div>
-    </div>
 
     <script>
       function move(select, candidate) {

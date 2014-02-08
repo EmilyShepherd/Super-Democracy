@@ -3,6 +3,12 @@
     <div id="delimiter">
     <h1><?=$position['name']?></h1>
 
+    <div class="progress">
+      <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: <?= (int)(($_GET['step']/count($_SESSION['votes']))*100) ?>%;">
+        <span class="sr-only"><?= (int)(($_GET['step']/count($_SESSION['votes']))*100) ?>% Complete</span>
+      </div>
+    </div>
+
     <button onclick="window.location.href = 'vote.php?step=<?=$_GET['step'] + 1?>'" type="button" class="btn btn-default" style="float: right;">Skip</button>
     <p><?=$position['description']?></p>
 
@@ -69,11 +75,7 @@
       <input id="continue" type="submit" class="btn btn-primary" value="Continue" />
     </form>
 
-    <div class="progress">
-      <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: <?= (int)(($_GET['step']/count($_SESSION['votes']))*100) ?>%;">
-        <span class="sr-only"><?= (int)(($_GET['step']/count($_SESSION['votes']))*100) ?>% Complete</span>
-      </div>
-    </div>
+
 
     <script>
       document.getElementById('continue').onclick = function () {
