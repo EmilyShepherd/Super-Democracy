@@ -63,6 +63,23 @@
   (
     'UPDATE person SET `shirt_size` = ' . $shirt_size . ' WHERE `person`.`id` = ' . $user_id
   );
-  echo $db->error;
-  echo (int)$user_id . ',' . (int)$pos_elec[0] . ',' . (int)$pos_elec[1] . ',' . $manifesto . ',' . $pitch . ',' . $shirt_size;
 ?>
+
+<?php
+$title = "Super Democracy";
+
+include 'common/header.php';
+
+include 'model/index.php';
+?>
+  </head>
+  <body>
+    <div id="delimiter">
+      <header>
+        <h1 style="text-align: center;">Super Democracy Elections</h1>
+      </header>
+      <h2>Thank you for your nomination</h2>
+      <p>You have successfully nominated yourself for the SUSU elections!</p>
+    </div>
+  </body>
+</html>
