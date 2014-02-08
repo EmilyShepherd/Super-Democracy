@@ -49,6 +49,14 @@ foreach ($_SESSION['voted'] as $vote)
     }
 }
 
-?>
+$title = "Vote Success";
 
+include 'common/header.php';
+
+?>
+<div id="delimiter">
 <h1>Success!</h1>
+</div>
+
+<?php
+    include 'common/footer.php';
