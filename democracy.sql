@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 08, 2014 at 09:21 AM
+-- Generation Time: Feb 08, 2014 at 06:43 PM
 -- Server version: 5.6.14
 -- PHP Version: 5.5.6
 
@@ -33,17 +33,6 @@ CREATE TABLE IF NOT EXISTS `av` (
   `time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Dumping data for table `av`
---
-
-INSERT INTO `av` (`vote_id`, `candidate_id`, `pref`, `time`) VALUES
-(0, 1, 0, '2014-02-08 08:15:37'),
-(1, 1, 0, '2014-02-08 08:16:13'),
-(2, 4, 0, '2014-02-08 08:16:51'),
-(2, 1, 1, '2014-02-08 08:16:51'),
-(2, 2, 2, '2014-02-08 08:16:51');
-
 -- --------------------------------------------------------
 
 --
@@ -58,21 +47,7 @@ CREATE TABLE IF NOT EXISTS `candidate` (
   `manifesto` text NOT NULL,
   `pitch` text NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=9 ;
-
---
--- Dumping data for table `candidate`
---
-
-INSERT INTO `candidate` (`id`, `person_id`, `position_id`, `election_id`, `manifesto`, `pitch`) VALUES
-(1, 3, 2, 1, 'I am great m8', 'Nope m8'),
-(2, 1, 2, 1, 'Stuff', 'Stuff'),
-(3, 1, 3, 1, 'Stuff', 'Stuff'),
-(4, 4, 2, 1, 'Other Stuff', 'Yes'),
-(5, 2, 2, 1, 'RON', 'Re Open Nominations'),
-(6, 1, 4, 1, 'Woohoo!', 'Nope'),
-(7, 2, 1, 1, 'Reopen Nominations', 'Re Open Nominations'),
-(8, 2, 3, 1, '', 'Re Open Nominations');
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -95,7 +70,7 @@ CREATE TABLE IF NOT EXISTS `election` (
 --
 
 INSERT INTO `election` (`id`, `name`, `nomination_start`, `nomination_end`, `vote_start`, `vote_end`) VALUES
-(1, 'Test Election', '2014-02-08 07:55:48', '0000-00-00 00:00:00', '2014-02-07 21:11:57', '2014-02-28 00:00:00');
+(1, 'SUSU Elections', '2014-02-01 00:00:00', '2014-02-19 12:00:00', '2014-02-03 12:00:00', '2014-03-10 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -115,8 +90,18 @@ CREATE TABLE IF NOT EXISTS `election-position` (
 INSERT INTO `election-position` (`election_id`, `position_id`) VALUES
 (1, 1),
 (1, 2),
-(1, 3),
-(1, 4);
+(1, 4),
+(1, 5),
+(1, 6),
+(1, 7),
+(1, 8),
+(1, 9),
+(1, 10),
+(1, 11),
+(1, 12),
+(1, 13),
+(1, 14),
+(1, 15);
 
 -- --------------------------------------------------------
 
@@ -129,18 +114,7 @@ CREATE TABLE IF NOT EXISTS `fptp` (
   `candidate_id` int(11) NOT NULL,
   `time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
-
---
--- Dumping data for table `fptp`
---
-
-INSERT INTO `fptp` (`id`, `candidate_id`, `time`) VALUES
-(1, 7, '2014-02-08 06:37:46'),
-(2, 2, '2014-02-08 06:37:46'),
-(3, 4, '2014-02-08 06:37:46'),
-(4, 3, '2014-02-08 06:37:46'),
-(5, 6, '2014-02-08 06:37:46');
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -152,15 +126,14 @@ CREATE TABLE IF NOT EXISTS `group` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` text NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
 
 --
 -- Dumping data for table `group`
 --
 
 INSERT INTO `group` (`id`, `name`) VALUES
-(1, 'General Students'),
-(2, 'Not Pres');
+(1, 'All Students');
 
 -- --------------------------------------------------------
 
@@ -178,18 +151,7 @@ CREATE TABLE IF NOT EXISTS `group-person` (
 --
 
 INSERT INTO `group-person` (`group_id`, `person_id`) VALUES
-(1, 1),
-(1, 2),
-(1, 3),
-(1, 4),
-(1, 5),
-(1, 6),
-(1, 7),
-(1, 8),
-(1, 9),
-(1, 10),
-(1, 11),
-(2, 1);
+(1, 2);
 
 -- --------------------------------------------------------
 
@@ -203,7 +165,7 @@ CREATE TABLE IF NOT EXISTS `hasvoted` (
   `position_id` int(11) NOT NULL,
   `person_id` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -216,25 +178,17 @@ CREATE TABLE IF NOT EXISTS `person` (
   `name` text NOT NULL,
   `shirt_size` int(11) NOT NULL,
   `image` text NOT NULL,
+  `issname` text NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=13 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
 
 --
 -- Dumping data for table `person`
 --
 
-INSERT INTO `person` (`id`, `name`, `shirt_size`, `image`) VALUES
-(1, 'RON', 0, ''),
-(2, 'Emily', 0, ''),
-(3, 'Milosz', 0, ''),
-(4, 'Chris', 0, ''),
-(5, 'DMW', 0, ''),
-(6, 'Gilanuia', 0, ''),
-(7, 'Beckie', 0, ''),
-(8, 'Claire', 0, ''),
-(9, 'David Martin', 0, ''),
-(10, 'Evan', 0, ''),
-(11, 'Oli Coles', 0, '');
+INSERT INTO `person` (`id`, `name`, `shirt_size`, `image`, `issname`) VALUES
+(1, 'RON', 0, '', '0'),
+(2, 'Emily', 0, '', 'ams2g11');
 
 -- --------------------------------------------------------
 
@@ -248,17 +202,27 @@ CREATE TABLE IF NOT EXISTS `position` (
   `description` text NOT NULL,
   `voting` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=16 ;
 
 --
 -- Dumping data for table `position`
 --
 
 INSERT INTO `position` (`id`, `name`, `description`, `voting`) VALUES
-(1, 'President', 'Do you have what it takes to be Union President? This demanding position allows you to really impact the shape and direction of the Students'' Union. As President you are the leader of the Sabbatical Officers and your role is to bring out the best in your team, so that together you are able to make maximum impact on improving the lives of students. You also provide the important link between the officers and staff of the Union.', 0),
-(2, 'VP Education', 'Passionate about good education? The Vice President Education represents students and campaigns on matters relating directly to students'' education like teaching quality, library provision and feedback. They are responsible for implementing many of the Union''s education policies and work closely with Academic Presidents, Faculty Officers and Course Reps to improve students'' education experience.', 0),
-(3, 'VP Welfare', 'The VP Welfare works with the University and SUSU to ensure action on issues which may jeopardise students'' wellbeing, such as housing, mental health and financial issues. You will campaign to protect and enhance student rights and positively promote changes to lifestyle that can improve student well-being. You will also lead on campaigns that promote equality for all our members.', 0),
-(4, 'VP Engagement', 'The VP Engagement supports student groups to interact with and positively impact the external community. You will take a lead on increasing participation within the student community, both in terms of width and depth of participation. You will also have oversight of SUSU''s website, social media and all SUSU communications.', 0);
+(1, 'President', '', 0),
+(2, 'VP Education', '', 0),
+(4, 'VP Welfare', '', 0),
+(5, 'VP Engagement', '', 0),
+(6, 'VP Sport', '', 0),
+(7, 'VP DCI', '', 0),
+(8, 'VP Student Communities', '', 0),
+(9, 'PA Officer', '', 0),
+(10, 'Nightline Officer', '', 0),
+(11, 'LGBT Officer', '', 0),
+(12, 'SUSUtv Station Manager', '', 0),
+(13, 'Surge Station Manager', '', 0),
+(14, 'NOC Site Officer', '', 0),
+(15, 'WSA Site Officer', '', 0);
 
 -- --------------------------------------------------------
 
@@ -272,7 +236,27 @@ CREATE TABLE IF NOT EXISTS `position-eligable` (
   `group_id` int(11) NOT NULL,
   `exclude` tinyint(1) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=15 ;
+
+--
+-- Dumping data for table `position-eligable`
+--
+
+INSERT INTO `position-eligable` (`id`, `position_id`, `group_id`, `exclude`) VALUES
+(1, 1, 1, 0),
+(2, 2, 1, 0),
+(3, 4, 1, 0),
+(4, 5, 1, 0),
+(5, 6, 1, 0),
+(6, 7, 1, 0),
+(7, 8, 1, 0),
+(8, 9, 1, 0),
+(9, 10, 1, 0),
+(10, 11, 1, 0),
+(11, 12, 1, 0),
+(12, 13, 1, 0),
+(13, 14, 1, 0),
+(14, 15, 1, 0);
 
 -- --------------------------------------------------------
 
@@ -286,7 +270,7 @@ CREATE TABLE IF NOT EXISTS `position-vote` (
   `group_id` int(11) NOT NULL,
   `exclude` tinyint(1) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=15 ;
 
 --
 -- Dumping data for table `position-vote`
@@ -295,9 +279,18 @@ CREATE TABLE IF NOT EXISTS `position-vote` (
 INSERT INTO `position-vote` (`id`, `position_id`, `group_id`, `exclude`) VALUES
 (1, 1, 1, 0),
 (2, 2, 1, 0),
-(3, 3, 1, 0),
-(4, 4, 1, 0),
-(5, 1, 2, 1);
+(3, 4, 1, 0),
+(4, 5, 1, 0),
+(5, 6, 1, 0),
+(6, 7, 1, 0),
+(7, 8, 1, 0),
+(8, 9, 1, 0),
+(9, 10, 1, 0),
+(10, 11, 1, 0),
+(11, 12, 1, 0),
+(12, 13, 1, 0),
+(13, 14, 1, 0),
+(14, 15, 1, 0);
 
 -- --------------------------------------------------------
 
@@ -308,15 +301,7 @@ INSERT INTO `position-vote` (`id`, `position_id`, `group_id`, `exclude`) VALUES
 CREATE TABLE IF NOT EXISTS `voteids` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
-
---
--- Dumping data for table `voteids`
---
-
-INSERT INTO `voteids` (`id`) VALUES
-(1),
-(2);
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
