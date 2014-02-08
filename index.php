@@ -34,7 +34,7 @@ include 'model/index.php';
   <body>
     <div id="delimiter">
       <header>
-        <h1 style="text-align: center;">Current Elections</h1>
+        <h1 style="text-align: center;">Super Democracy Elections</h1>
       </header>
 
       <?php if (!$positions) : ?>
@@ -52,7 +52,7 @@ include 'model/index.php';
                       <?= $position['name']?>
                     </a>
                     <span style="float: right; position: relative; bottom: 3px;">
-                      Vote in this election? <input type="checkbox" name="vote_in[]" value="<?=  $position['id']?>_<?= $position['election_id'] ?>" checked>
+                      Vote in this election? <input type="checkbox" name="vote_in[]" value="<?=  $position['id']?>_<?= $position['election_id'] ?>" checked onclick="event.cancelBubble = true;">
                     </span>
                   </h4>
                 </div>
