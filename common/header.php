@@ -28,4 +28,13 @@
     {
         padding: 5px;
     }
+
+    #logo
+    {
+        text-align: center;
+    }
     </style>
+
+    <div id="logo">
+      <img src="/images/elogo.png" alt="SUSU Elections" id="logo" />
+    </div>
