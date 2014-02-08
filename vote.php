@@ -10,6 +10,12 @@ define('FPTP', 1);
 $user = 1;
 $candidates = array( );
 
+if ($_POST)
+{
+    $_SESSION['voted'][$_POST['step']] = $_POST;
+    header('Location: ?step=' . ((int)$_POST['step'] + 1));
+}
+
 if (!isset($_GET['step']))
 {
     include 'vote-error.php';

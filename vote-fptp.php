@@ -48,9 +48,8 @@
 
     <p><?=$position['description']?></p>
 
-    <form action="vote-fptp.php" method="post">
-      <input name="election" type="hidden" value="<?=$_GET["election"]?>">
-      <input name="position" type="hidden" value="<?=$_GET["position"]?>">
+    <form action="vote.php" method="post">
+      <input type="hidden" name="step" value="<?=$_GET['step']?>" />
 
       <div class="panel-group" id="accordion1">
         <?php foreach ($candidates as $candidate) : ?>
