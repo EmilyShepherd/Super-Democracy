@@ -2,19 +2,24 @@
 
 include 'model/database.php';
 
+session_start();
+
 define('AV',   0);
 define('FPTP', 1);
 
 $user = 1;
 $candidates = array( );
 
-if (!isset($_GET['election']) || !isset($_GET['position']))
+if (!isset($_GET['step']))
 {
     include 'vote-error.php';
     exit;
 }
 else
 {
+    $_GET['position'] = $_SESSION['votes'][$_GET['step']][0];
+    $_GET['election'] = $_SESSION['votes'][$_GET['step']][1];
+
     $position = $db->query
     (
           'SELECT * FROM position '

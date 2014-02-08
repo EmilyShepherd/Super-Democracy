@@ -17,7 +17,7 @@
         vertical-align:text-top;
       }
       
-      <!-- For large checkboxes, should we choose to use them -->
+      /* For large checkboxes, should we choose to use them */
       .large
       {
         width: 30px;
