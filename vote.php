@@ -87,19 +87,12 @@ else
         margin: 0 0 0 0;
     }
 
-    #delimiter
-    {
-        max-width:800px;
-        margin-left:auto;
-        margin-right:auto;
-    }
-    
     .bigbutton
     {
       height: 100px;
       width: 130px;
     }
-    
+
     .arrbutton
     {
       height: 100px;
@@ -114,16 +107,39 @@ else
         exit;
     }
 }
+?>
+
+</head>
+<body>
+  <div id="delimiter">
+  <h1 style="text-align: center;"><?=$position['name']?></h1>
+  <div class="progress progress-striped">
+    <div class="progress-bar"
+         role="progressbar"
+         aria-valuenow="60"
+         aria-valuemin="0"
+         aria-valuemax="100"
+         style="width: <?= (int)(($_GET['step']/count($_SESSION['votes']))*100) ?>%;">
+    </div>
+  </div>
+  <p style="text-align: center;"><?= (int)(($_GET['step']/count($_SESSION['votes']))*100) ?>% Complete</p>
+
+  <button onclick="window.location.href = 'vote.php?step=<?=$_GET['step'] + 1?>'" type="button" class="btn btn-default" style="float: right;">
+    Skip
+  </button>
+  <p><?=$position['description']?></p>
+
+<?php
 
 switch ($position['voting'])
 {
     case AV:
         include 'vote-av.php';
-        include 'common/footer.php';
-        exit;
+        break;
 
     case FPTP:
         include 'vote-fptp.php';
-        include 'common/footer.php';
-        exit;
+        break;
+
+    include 'common/footer.php';
 }
