@@ -23,4 +23,9 @@
         margin-left:auto;
         margin-right:auto;
     }
+
+    html, body
+    {
+        padding: 5px;
+    }
     </style>
