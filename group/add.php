@@ -12,15 +12,20 @@ if (isset($_POST['name']))
 
 ?>
 
+<div id="delimiter" style="text-align: center;">
 <h1 style="text-align: center;">Add Group</h1>
 
+<p>Groups are used to manage permissions within the SUSU voting system,
+groups can be given access to positions such that the group members can stand and/or vote for those positions.</p>
+
 <form method="post">
-  <b>Name Your Group:</b> <br />
+  <h2>Name Your Group:</h2>
   <input type="text" name="name" />
 
-  <br /><br />
-
-  <input type="submit" value="Create Group" />
+  <br />
+  <br />
+  <input class="btn btn-primary btn-lg" type="submit" value="Create Group" />
 </form>
+</div>
 
 <?php include '../common/footer.php';
