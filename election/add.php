@@ -99,7 +99,7 @@ if ($_POST)
     <![endif]-->
 
   </head>
-  <body>
+  <body style="text-align: center;">
     <div id="delimiter">
       <header>
         <h1>Add an Election</h1>
@@ -125,7 +125,9 @@ if ($_POST)
             </option>
           <?php endwhile ?>
         </select>
-
+        <br />
+        <br />
+        <input id="add" type="submit" class="btn btn-primary btn-lg" value="Add Election" style="margin-left: auto; margin-right: auto;" />
       </form>
 
     </div>
