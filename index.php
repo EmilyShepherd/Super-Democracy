@@ -51,7 +51,7 @@ include 'model/index.php';
                     <a class="pos_name" data-toggle="collapse" data-parent="#positions" href="#desc_<?= $position['id'] ?>_<?= $position['election_id'] ?>">
                       <?= $position['name']?>
                     </a>
-                    <span style="float: right;">
+                    <span style="float: right; position: relative; bottom: 3px;">
                       Vote in this election? <input type="checkbox" name="vote_in[]" value="<?=  $position['id']?>_<?= $position['election_id'] ?>" checked>
                     </span>
                   </h4>
