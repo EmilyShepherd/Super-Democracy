@@ -17,6 +17,11 @@
     echo 'No position specified';
     exit;
   }
+  if(!isset($_POST['legal']))
+  {
+    echo 'You must accept the T&C';
+    exit;
+  }
   $pos_elec = explode('_', $_POST['position']);
   if(isset($_POST['manifesto']))
   {
