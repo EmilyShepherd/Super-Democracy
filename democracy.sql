@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 08, 2014 at 08:55 AM
+-- Generation Time: Feb 08, 2014 at 09:21 AM
 -- Server version: 5.6.14
 -- PHP Version: 5.5.6
 
@@ -32,6 +32,17 @@ CREATE TABLE IF NOT EXISTS `av` (
   `pref` int(11) NOT NULL,
   `time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `av`
+--
+
+INSERT INTO `av` (`vote_id`, `candidate_id`, `pref`, `time`) VALUES
+(0, 1, 0, '2014-02-08 08:15:37'),
+(1, 1, 0, '2014-02-08 08:16:13'),
+(2, 4, 0, '2014-02-08 08:16:51'),
+(2, 1, 1, '2014-02-08 08:16:51'),
+(2, 2, 2, '2014-02-08 08:16:51');
 
 -- --------------------------------------------------------
 
@@ -204,6 +215,7 @@ CREATE TABLE IF NOT EXISTS `person` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` text NOT NULL,
   `shirt_size` int(11) NOT NULL,
+  `image` text NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=13 ;
 
@@ -211,18 +223,18 @@ CREATE TABLE IF NOT EXISTS `person` (
 -- Dumping data for table `person`
 --
 
-INSERT INTO `person` (`id`, `name`, `shirt_size`) VALUES
-(1, 'RON', 0),
-(2, 'Emily', 0),
-(3, 'Milosz', 0),
-(4, 'Chris', 0),
-(5, 'DMW', 0),
-(6, 'Gilanuia', 0),
-(7, 'Beckie', 0),
-(8, 'Claire', 0),
-(9, 'David Martin', 0),
-(10, 'Evan', 0),
-(11, 'Oli Coles', 0);
+INSERT INTO `person` (`id`, `name`, `shirt_size`, `image`) VALUES
+(1, 'RON', 0, ''),
+(2, 'Emily', 0, ''),
+(3, 'Milosz', 0, ''),
+(4, 'Chris', 0, ''),
+(5, 'DMW', 0, ''),
+(6, 'Gilanuia', 0, ''),
+(7, 'Beckie', 0, ''),
+(8, 'Claire', 0, ''),
+(9, 'David Martin', 0, ''),
+(10, 'Evan', 0, ''),
+(11, 'Oli Coles', 0, '');
 
 -- --------------------------------------------------------
 
@@ -286,6 +298,25 @@ INSERT INTO `position-vote` (`id`, `position_id`, `group_id`, `exclude`) VALUES
 (3, 3, 1, 0),
 (4, 4, 1, 0),
 (5, 1, 2, 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `voteids`
+--
+
+CREATE TABLE IF NOT EXISTS `voteids` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+
+--
+-- Dumping data for table `voteids`
+--
+
+INSERT INTO `voteids` (`id`) VALUES
+(1),
+(2);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

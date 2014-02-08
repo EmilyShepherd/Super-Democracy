@@ -2,6 +2,9 @@
 
 include 'model/database.php';
 
+define('AV', 0);
+define('FPTP', 1);
+
 session_start();
 
 foreach ($_SESSION['voted'] as $vote)
@@ -13,7 +16,7 @@ foreach ($_SESSION['voted'] as $vote)
     {
         switch($position['voting'])
         {
-            case 0:
+            case AV:
                 if (!isset($vote['candidate']) || !is_array($vote['candidate']))
                 {
                     break;
@@ -21,6 +24,9 @@ foreach ($_SESSION['voted'] as $vote)
 
                 $expecting = 0;
                 asort($vote['candidate']);
+
+                $db->query('INSERT INTO voteids VALUES(0)');
+                $id = $db->insert_id;
 
                 foreach ($vote['candidate'] as $ca => $position)
                 {
@@ -32,18 +38,18 @@ foreach ($_SESSION['voted'] as $vote)
                     {
                         $db->query
                         (
-                              'INSERT INTO votes(candidate_id, round, time) '
-                            . 'VALUES (' . (int)$ca . ',' . (int)$position . ', NOW())'
+                              'INSERT INTO av(vote_id, candidate_id, pref, time) '
+                            . 'VALUES (' . $id . ',' . (int)$ca . ',' . (int)$position . ', NOW())'
                         );
                     }
                 }
                 break;
 
-            case 1:
+            case FPTP:
                 $db->query
                 (
-                      'INSERT INTO votes(candidate_id, round, time) '
-                    . 'VALUES (' . (int)$vote['vote'] . ', 0, NOW())'
+                      'INSERT INTO fptp(candidate_id, time) '
+                    . 'VALUES (' . (int)$vote['vote'] . ', NOW())'
                 );
         }
     }
