@@ -57,7 +57,7 @@
       <h2>Position</h2>
       <?php include 'model/nominate.php' ?>
 
-      <form action="addcandidate.php" method="post">
+      <form action="addcandidate.php" method="post" enctype="multipart/form-data">
         <p>I wish to nominate myself for the position of: <select name="position">
           <?php foreach ($positions as $position): ?>
             <option value="<?=$position['id']?>_<?=$position['election_id']?>"><?=$position['name']?></option>
@@ -84,11 +84,11 @@
         <input type="file" name="photo" />
         <h2>Your T-shirt size</h2>
         <select name="size">
-          <option value="XS">Extra Small</option>
-          <option value="S">Small</option>
-          <option value="M">Medium</option>
-          <option value="L">Large</option>
-          <option value="XL">Extra Large</option>
+          <option value="1">Extra Small</option>
+          <option value="2">Small</option>
+          <option value="3">Medium</option>
+          <option value="4">Large</option>
+          <option value="5">Extra Large</option>
         </select>
         <h2>The small print</h2>
         <input type="checkbox" name="legal"> m8 yes
