@@ -1,3 +1,5 @@
+![SUSU Elections](images/elogo.png)
+
 Super Democracy
 ===============
 
